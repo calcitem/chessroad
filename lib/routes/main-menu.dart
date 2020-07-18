@@ -99,11 +99,11 @@ class _MainMenuState extends State<MainMenu> with TickerProviderStateMixin {
           Expanded(child: SizedBox()),
           Transform.scale(
             scale: inAnimation.value,
-            child: Text('中国象棋', style: nameStyle, textAlign: TextAlign.center),
+            child: Text('直棋', style: nameStyle, textAlign: TextAlign.center),
           ),
           Expanded(child: SizedBox()),
           FlatButton(
-            child: Text('单机对战', style: menuItemStyle),
+            child: Text('人机对战', style: menuItemStyle),
             onPressed: () => navigateTo(BattlePage(EngineType.Native)),
           ),
           Expanded(child: SizedBox()),
@@ -121,7 +121,7 @@ class _MainMenuState extends State<MainMenu> with TickerProviderStateMixin {
             },
           ),
           Expanded(child: SizedBox(), flex: 3),
-          Text('用心娱乐，为爱传承', style: TextStyle(color: Colors.black54, fontSize: 16)),
+          Text('适度游戏益脑', style: TextStyle(color: Colors.black54, fontSize: 16)),
           Expanded(child: SizedBox()),
         ],
       ),

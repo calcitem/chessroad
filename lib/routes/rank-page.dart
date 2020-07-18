@@ -104,7 +104,7 @@ class _RankPageState extends State<RankPage> {
             SizedBox(height: 5),
             Text('战胜云库：${rank.winCloudEngine}'),
             SizedBox(height: 5),
-            Text('战胜手机：${rank.winPhoneAi}'),
+            Text('战胜电脑：${rank.winPhoneAi}'),
           ],
         ),
         actions: <Widget>[
@@ -127,7 +127,7 @@ class _RankPageState extends State<RankPage> {
           children: <Widget>[
             Text('战胜云库：+ 30分'),
             SizedBox(height: 5),
-            Text('战胜手机：+ 5分'),
+            Text('战胜电脑：+ 5分'),
             SizedBox(height: 5),
           ],
         ),

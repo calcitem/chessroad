@@ -128,7 +128,7 @@ class _SettingsPageState extends State<SettingsPage> {
       context: context,
       barrierDismissible: false,
       builder: (context) => AlertDialog(
-        title: Text('关于「棋路」', style: TextStyle(color: ColorConsts.Primary)),
+        title: Text('关于「直棋 」', style: TextStyle(color: ColorConsts.Primary)),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -140,7 +140,7 @@ class _SettingsPageState extends State<SettingsPage> {
             Text('QQ群', style: TextStyle(fontFamily: '')),
             GestureDetector(
               onTap: () {
-                Clipboard.setData(ClipboardData(text: '67220535'));
+                Clipboard.setData(ClipboardData(text: '696994992'));
                 Toast.toast(context, msg: '群号已复制！');
               },
               child: Text(
@@ -153,12 +153,12 @@ class _SettingsPageState extends State<SettingsPage> {
             GestureDetector(
               onTap: () {
                 Clipboard.setData(
-                  ClipboardData(text: 'https://www.apppk.cn/apps/chessroad.html'),
+                  ClipboardData(text: 'http://www.calcitem.com'),
                 );
                 Toast.toast(context, msg: '网址已复制！');
               },
               child: Text(
-                "https://www.apppk.cn/apps/chessroad.html",
+                "http://www.calcitem.com",
                 style: TextStyle(fontFamily: '', color: Colors.blue),
               ),
             ),
@@ -254,7 +254,7 @@ class _SettingsPageState extends State<SettingsPage> {
               child: Column(
                 children: <Widget>[
                   ListTile(
-                    title: Text("关于「棋路」", style: itemStyle),
+                    title: Text("关于「直棋」", style: itemStyle),
                     trailing: Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
                       Text(_version ?? ''),
                       Icon(Icons.keyboard_arrow_right, color: ColorConsts.Secondary),
