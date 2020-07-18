@@ -42,9 +42,3 @@ flutter:
     - assets/audios/win.mp3
 
     - assets/book.dat
-
-  fonts:
-    - family: QiTi
-      fonts:
-        - asset: fonts/qiti.ttf
-
