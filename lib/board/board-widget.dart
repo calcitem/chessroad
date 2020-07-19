@@ -39,7 +39,7 @@ class BoardWidget extends StatelessWidget {
             horizontal: (width - Padding * 2) / 9 / 2 +
             	Padding - WordsOnBoard.DigitsFontSize / 2,
           ),
-          child: WordsOnBoard(),
+          //child: WordsOnBoard(),
         ),
       ),
     );
