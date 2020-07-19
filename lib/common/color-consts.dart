@@ -26,6 +26,9 @@ class ColorConsts {
   static const BlackPieceColor = Color.fromARGB(0xFF, 0x00, 0x00, 0x00);
   static const BlackPieceBorderColor = Color.fromARGB(0xFF, 0x22, 0x22, 0x22);
 
+  static const WhitePieceColor = Color.fromARGB(0xFF, 0xFF, 0xFF, 0xFF);
+  static const WhitePieceBorderColor = Color.fromARGB(0xFF, 0x66, 0x00, 0x00);
+
   static const RedPieceColor = Color.fromARGB(0xFF, 0x7B, 0x00, 0x00);
   static const RedPieceBorderColor = Color.fromARGB(0xFF, 0x66, 0x00, 0x00);
 

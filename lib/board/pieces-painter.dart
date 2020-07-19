@@ -99,11 +99,11 @@ class PiecesPainter extends PainterBase {
 
     piecesToDraw.forEach((pps) {
       //
-      paint.color = Piece.isRed(pps.piece) ? ColorConsts.RedPieceBorderColor : ColorConsts.BlackPieceBorderColor;
+      paint.color = Piece.isWhite(pps.piece) ? ColorConsts.WhitePieceBorderColor : ColorConsts.BlackPieceBorderColor;
 
       canvas.drawCircle(pps.pos, pieceSide / 2, paint);
 
-      paint.color = Piece.isRed(pps.piece) ? ColorConsts.RedPieceColor : ColorConsts.BlackPieceColor;
+      paint.color = Piece.isWhite(pps.piece) ? ColorConsts.WhitePieceColor : ColorConsts.BlackPieceColor;
 
       canvas.drawCircle(pps.pos, pieceSide * 0.8 / 2, paint);
 

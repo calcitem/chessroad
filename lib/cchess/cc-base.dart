@@ -64,7 +64,7 @@ class Piece {
     BlackPawn: '卒',
   };
 
-  static bool isRed(String c) => 'RNBAKCP'.contains(c);
+  static bool isWhite(String c) => 'RNBAKCP'.contains(c);
 
   static bool isBlack(String c) => 'rnbakcp'.contains(c);
 }
