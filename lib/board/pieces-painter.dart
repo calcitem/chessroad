@@ -119,7 +119,7 @@ class PiecesPainter extends PainterBase {
       // 从顶上算，文字的 Baseline 在 2/3 高度线上
       final textOffset = pps.pos - Offset(textSize.width / 2, metric.baseline - textSize.height / 3);
 
-      textPainter.paint(canvas, textOffset);
+      //textPainter.paint(canvas, textOffset);
     });
 
     // draw focus and blur position
