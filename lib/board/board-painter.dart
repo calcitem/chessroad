@@ -82,6 +82,7 @@ class BoardPainter extends PainterBase {
       );
     }
 
+    /*
     // 九宫中的斜线
     canvas.drawLine(
       Offset(left + squareSide * 3, top),
@@ -103,7 +104,9 @@ class BoardPainter extends PainterBase {
       Offset(left + squareSide * 3, top + squareSide * 9),
       paint,
     );
+    */
 
+/*
     // 炮/兵架位置指示
     final positions = [
       // 炮架位置指示
@@ -140,5 +143,7 @@ class BoardPainter extends PainterBase {
       var rect = Rect.fromCenter(center: pos, width: 10, height: 10);
       canvas.drawArc(rect, pi / 2, pi, true, paint);
     });
+
+    */
   }
 }
