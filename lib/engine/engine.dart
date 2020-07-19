@@ -1,4 +1,4 @@
-import 'package:chessroad/cchess/phase.dart';
+import '../cchess/phase.dart';
 
 enum EngineType { Cloud, Native }
 

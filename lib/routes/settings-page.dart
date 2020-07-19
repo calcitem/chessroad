@@ -1,4 +1,4 @@
-import 'package:chessroad/services/player.dart';
+import '../services/player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:package_info/package_info.dart';

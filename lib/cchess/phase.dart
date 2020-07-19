@@ -1,4 +1,4 @@
-import 'package:chessroad/cchess/cc-recorder.dart';
+import '../cchess/cc-recorder.dart';
 
 import 'cc-base.dart';
 import 'step-name.dart';

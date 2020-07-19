@@ -144,7 +144,7 @@ class _RankPageState extends State<RankPage> {
     final subTitleStyle = TextStyle(fontSize: 16, color: ColorConsts.DarkTextSecondary);
 
     return Container(
-      margin: EdgeInsets.only(top: ChessRoadApp.StatusBarHeight),
+      margin: EdgeInsets.only(top: SanmillApp.StatusBarHeight),
       child: Column(
         children: <Widget>[
           Row(

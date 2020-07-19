@@ -1,4 +1,4 @@
-import 'package:chessroad/game/battle.dart';
+import '../game/battle.dart';
 import 'package:flutter/material.dart';
 import '../common/color-consts.dart';
 import 'board-painter.dart';

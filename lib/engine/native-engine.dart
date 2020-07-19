@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:chessroad/cchess/cc-base.dart';
-import 'package:chessroad/cchess/phase.dart';
+import '../cchess/cc-base.dart';
+import '../cchess/phase.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -9,7 +9,7 @@ import 'engine.dart';
 
 class NativeEngine extends AiEngine {
   //
-  static const platform = const MethodChannel('cn.apppk.chessroad/engine');
+  static const platform = const MethodChannel('com.calcitem.sanmill/engine');
 
   Future<void> startup() async {
     //

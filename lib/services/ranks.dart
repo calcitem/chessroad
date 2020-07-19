@@ -35,7 +35,7 @@ class RankItem {
 
 class Ranks {
   //
-  static const Host = 'api.apppk.cn';
+  static const Host = 'api.calcitem.com';
   static const Port = 3838;
   static const QueryPath = '/ranks/';
   static const UploadPath = '/ranks/upload';

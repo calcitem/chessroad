@@ -1,4 +1,4 @@
-package cn.apppk.books.flutterchess;
+package com.calcitem.sanmill;
 
 public class CChessEngine {
 

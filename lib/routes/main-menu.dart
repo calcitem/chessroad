@@ -1,4 +1,4 @@
-import 'package:chessroad/engine/engine.dart';
+import '../engine/engine.dart';
 import 'package:flutter/material.dart';
 import '../common/color-consts.dart';
 import '../main.dart';
@@ -135,7 +135,7 @@ class _MainMenuState extends State<MainMenu> with TickerProviderStateMixin {
           Positioned(left: 0, bottom: 0, child: Image(image: AssetImage('images/zhu.png'))),
           menuItems,
           Positioned(
-            top: ChessRoadApp.StatusBarHeight,
+            top: SanmillApp.StatusBarHeight,
             left: 10,
             child: IconButton(
               icon: Icon(Icons.settings, color: ColorConsts.Primary),

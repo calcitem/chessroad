@@ -10,7 +10,7 @@ import 'services/player.dart';
 
 void main() {
   //
-  runApp(ChessRoadApp());
+  runApp(SanmillApp());
 
   SystemChrome.setPreferredOrientations(
     [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown],
@@ -25,15 +25,15 @@ void main() {
   SystemChrome.setEnabledSystemUIOverlays([]);
 }
 
-class ChessRoadApp extends StatefulWidget {
+class SanmillApp extends StatefulWidget {
   //
   static const StatusBarHeight = 28.0;
 
   @override
-  _ChessRoadAppState createState() => _ChessRoadAppState();
+  _SanmillAppState createState() => _SanmillAppState();
 }
 
-class _ChessRoadAppState extends State<ChessRoadApp> {
+class _SanmillAppState extends State<SanmillApp> {
   //
   @override
   void initState() {

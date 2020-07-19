@@ -23,7 +23,7 @@
     /// Chinese Chess Engine
     
     FlutterMethodChannel* engineChannel = [FlutterMethodChannel
-                                           methodChannelWithName:@"cn.apppk.chessroad/engine"
+                                           methodChannelWithName:@"com.calcitem.sanmill/engine"
                                            binaryMessenger:controller.binaryMessenger];
     
     __weak CChessEngine* weakEngine = engine;

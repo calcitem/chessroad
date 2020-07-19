@@ -1,4 +1,4 @@
-package cn.apppk.books.flutterchess;
+package com.calcitem.sanmill;
 
 import android.os.Bundle;
 
@@ -11,7 +11,7 @@ import io.flutter.plugins.GeneratedPluginRegistrant;
 
 public class MainActivity extends FlutterActivity {
 
-    private static final String ENGINE_CHANNEL = "cn.apppk.chessroad/engine";
+    private static final String ENGINE_CHANNEL = "com.calcitem.sanmill/engine";
 
     private CChessEngine engine;
 

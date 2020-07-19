@@ -1,13 +1,13 @@
-import 'package:chessroad/cchess/cc-base.dart';
-import 'package:chessroad/cchess/step-name.dart';
-import 'package:chessroad/common/color-consts.dart';
-import 'package:chessroad/common/toast.dart';
-import 'package:chessroad/engine/analysis.dart';
-import 'package:chessroad/engine/cloud-engine.dart';
-import 'package:chessroad/engine/engine.dart';
-import 'package:chessroad/engine/native-engine.dart';
-import 'package:chessroad/services/audios.dart';
-import 'package:chessroad/services/player.dart';
+import '../cchess/cc-base.dart';
+import '../cchess/step-name.dart';
+import '../common/color-consts.dart';
+import '../common/toast.dart';
+import '../engine/analysis.dart';
+import '../engine/cloud-engine.dart';
+import '../engine/engine.dart';
+import '../engine/native-engine.dart';
+import '../services/audios.dart';
+import '../services/player.dart';
 import 'package:flutter/material.dart';
 import '../game/battle.dart';
 import '../board/board-widget.dart';
@@ -313,7 +313,7 @@ class _BattlePageState extends State<BattlePage> {
     final subTitleStyle = TextStyle(fontSize: 16, color: ColorConsts.DarkTextSecondary);
 
     return Container(
-      margin: EdgeInsets.only(top: ChessRoadApp.StatusBarHeight),
+      margin: EdgeInsets.only(top: SanmillApp.StatusBarHeight),
       child: Column(
         children: <Widget>[
           Row(

@@ -28,16 +28,16 @@ void *engineThread(void *) {
 }
 
 JNIEXPORT jint JNICALL
-Java_cn_apppk_books_flutterchess_CChessEngine_send(JNIEnv *env, jobject, jstring command);
+Java_com_calcitem_sanmill_CChessEngine_send(JNIEnv *env, jobject, jstring command);
 
 JNIEXPORT jint JNICALL
-Java_cn_apppk_books_flutterchess_CChessEngine_shutdown(JNIEnv *, jobject);
+Java_com_calcitem_sanmill_CChessEngine_shutdown(JNIEnv *, jobject);
 
 JNIEXPORT jint JNICALL
-Java_cn_apppk_books_flutterchess_CChessEngine_startup(JNIEnv *env, jobject obj) {
+Java_com_calcitem_sanmill_CChessEngine_startup(JNIEnv *env, jobject obj) {
 
     if (thread_id) {
-        Java_cn_apppk_books_flutterchess_CChessEngine_shutdown(env, obj);
+        Java_com_calcitem_sanmill_CChessEngine_shutdown(env, obj);
         pthread_join(thread_id, NULL);
     }
 
@@ -48,13 +48,13 @@ Java_cn_apppk_books_flutterchess_CChessEngine_startup(JNIEnv *env, jobject obj) 
 
     pthread_create(&thread_id, NULL, engineThread, NULL);
 
-    Java_cn_apppk_books_flutterchess_CChessEngine_send(env, obj, env->NewStringUTF("ucci"));
+    Java_com_calcitem_sanmill_CChessEngine_send(env, obj, env->NewStringUTF("ucci"));
 
     return 0;
 }
 
 JNIEXPORT jint JNICALL
-Java_cn_apppk_books_flutterchess_CChessEngine_send(JNIEnv *env, jobject, jstring command) {
+Java_com_calcitem_sanmill_CChessEngine_send(JNIEnv *env, jobject, jstring command) {
 
     const char *pCommand = env->GetStringUTFChars(command, JNI_FALSE);
 
@@ -72,7 +72,7 @@ Java_cn_apppk_books_flutterchess_CChessEngine_send(JNIEnv *env, jobject, jstring
 }
 
 JNIEXPORT jstring JNICALL
-Java_cn_apppk_books_flutterchess_CChessEngine_read(JNIEnv *env, jobject) {
+Java_com_calcitem_sanmill_CChessEngine_read(JNIEnv *env, jobject) {
 
     char line[4096] = {0};
 
@@ -95,9 +95,9 @@ Java_cn_apppk_books_flutterchess_CChessEngine_read(JNIEnv *env, jobject) {
 }
 
 JNIEXPORT jint JNICALL
-Java_cn_apppk_books_flutterchess_CChessEngine_shutdown(JNIEnv *env, jobject obj) {
+Java_com_calcitem_sanmill_CChessEngine_shutdown(JNIEnv *env, jobject obj) {
 
-    Java_cn_apppk_books_flutterchess_CChessEngine_send(env, obj, env->NewStringUTF("quit"));
+    Java_com_calcitem_sanmill_CChessEngine_send(env, obj, env->NewStringUTF("quit"));
 
     pthread_join(thread_id, NULL);
 
@@ -107,12 +107,12 @@ Java_cn_apppk_books_flutterchess_CChessEngine_shutdown(JNIEnv *env, jobject obj)
 }
 
 JNIEXPORT jboolean JNICALL
-Java_cn_apppk_books_flutterchess_CChessEngine_isReady(JNIEnv *, jobject) {
+Java_com_calcitem_sanmill_CChessEngine_isReady(JNIEnv *, jobject) {
     return static_cast<jboolean>(state == Ready);
 }
 
 JNIEXPORT jboolean JNICALL
-Java_cn_apppk_books_flutterchess_CChessEngine_isThinking(JNIEnv *, jobject) {
+Java_com_calcitem_sanmill_CChessEngine_isThinking(JNIEnv *, jobject) {
     return static_cast<jboolean>(state == Thinking);
 }
 

@@ -90,12 +90,14 @@ class PiecesPainter extends PainterBase {
 
     paint.style = PaintingStyle.fill;
 
+    /*
     final textStyle = TextStyle(
       color: ColorConsts.PieceTextColor,
       fontSize: pieceSide * 0.8,
       fontFamily: 'QiTi',
       height: 1.0,
     );
+    */
 
     piecesToDraw.forEach((pps) {
       //
@@ -106,12 +108,14 @@ class PiecesPainter extends PainterBase {
       paint.color = Piece.isWhite(pps.piece) ? ColorConsts.WhitePieceColor : ColorConsts.BlackPieceColor;
 
       canvas.drawCircle(pps.pos, pieceSide * 0.8 / 2, paint);
-
+      /*
       final textSpan = TextSpan(text: Piece.Names[pps.piece], style: textStyle);
+
       final textPainter = TextPainter(
         text: textSpan,
         textDirection: TextDirection.ltr,
       )..layout();
+
 
       final metric = textPainter.computeLineMetrics()[0];
       final textSize = textPainter.size;
@@ -119,7 +123,8 @@ class PiecesPainter extends PainterBase {
       // 从顶上算，文字的 Baseline 在 2/3 高度线上
       final textOffset = pps.pos - Offset(textSize.width / 2, metric.baseline - textSize.height / 3);
 
-      //textPainter.paint(canvas, textOffset);
+      textPainter.paint(canvas, textOffset);
+      */
     });
 
     // draw focus and blur position

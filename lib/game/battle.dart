@@ -1,4 +1,4 @@
-import 'package:chessroad/services/audios.dart';
+import '../services/audios.dart';
 
 import '../cchess/cc-rules.dart';
 import '../cchess/cc-base.dart';
