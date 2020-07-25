@@ -71,16 +71,33 @@ class BoardPainter extends PainterBase {
       );
     }
 
+    // 左上斜线
     canvas.drawLine(
       Offset(left + 0, top),
+      Offset(left + squareSide * 2, top + squareSide * 2),
+      paint,
+    );
+
+    // 右下斜线
+    canvas.drawLine(
+      Offset(left + squareSide * 4, top + squareSide * 4),
       Offset(left + squareSide * 6, top + squareSide * 6),
       paint,
     );
 
+    // 右上斜线
     canvas.drawLine(
       Offset(left + squareSide * 6, top),
+      Offset(left + squareSide * 4, top + squareSide * 2),
+      paint,
+    );
+
+    // 左下斜线
+    canvas.drawLine(
+      Offset(left + squareSide * 2, top + squareSide * 4),
       Offset(left + squareSide * 0, top + squareSide * 6),
       paint,
     );
+
   }
 }
