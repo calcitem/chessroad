@@ -52,15 +52,45 @@ class BoardPainter extends PainterBase {
 
     paint.strokeWidth = 1;
 
-    // 8 根中间的横线
-    for (var i = 1; i < 6; i++) {
-      canvas.drawLine(
-        Offset(left, top + squareSide * i),
-        //Offset(left + gridWidth, top + squareSide * i),
-        Offset(left + squareSide * 6, top + squareSide * i),
-        paint,
-      );
-    }
+    // 横线 (从上到下)
+
+    canvas.drawLine(
+      Offset(left + squareSide * 1, top + squareSide * 1),
+      Offset(left + squareSide * 5, top + squareSide * 1),
+      paint,
+    );
+
+    canvas.drawLine(
+      Offset(left + squareSide * 2, top + squareSide * 2),
+      Offset(left + squareSide * 4, top + squareSide * 2),
+      paint,
+    );
+
+    canvas.drawLine(
+      Offset(left + squareSide * 2, top + squareSide * 4),
+      Offset(left + squareSide * 4, top + squareSide * 4),
+      paint,
+    );
+
+    canvas.drawLine(
+      Offset(left + squareSide * 1, top + squareSide * 5),
+      Offset(left + squareSide * 5, top + squareSide * 5),
+      paint,
+    );
+
+    // 中间的横线 (从左到右)
+
+    canvas.drawLine(
+      Offset(left, top + squareSide * 3),
+      Offset(left + squareSide * 2, top + squareSide * 3),
+      paint,
+    );
+
+    canvas.drawLine(
+      Offset(left + squareSide * 4, top + squareSide * 3),
+      Offset(left + squareSide * 6, top + squareSide * 3),
+      paint,
+    );
 
     // 上下各6根短竖线
     for (var i = 0; i < 6; i++) {
