@@ -92,14 +92,45 @@ class BoardPainter extends PainterBase {
       paint,
     );
 
-    // 上下各6根短竖线
-    for (var i = 0; i < 6; i++) {
-      canvas.drawLine(
-        Offset(left + squareSide * i, top),
-        Offset(left + squareSide * i, top + squareSide * 6),
-        paint,
-      );
-    }
+    // 竖线 (从左到右)
+
+    canvas.drawLine(
+      Offset(left + squareSide * 1, top + squareSide * 1),
+      Offset(left + squareSide * 1, top + squareSide * 5),
+      paint,
+    );
+
+    canvas.drawLine(
+      Offset(left + squareSide * 2, top + squareSide * 2),
+      Offset(left + squareSide * 2, top + squareSide * 4),
+      paint,
+    );
+
+    canvas.drawLine(
+      Offset(left + squareSide * 4, top + squareSide * 2),
+      Offset(left + squareSide * 4, top + squareSide * 4),
+      paint,
+    );
+
+    canvas.drawLine(
+      Offset(left + squareSide * 5, top + squareSide * 1),
+      Offset(left + squareSide * 5, top + squareSide * 5),
+      paint,
+    );
+
+    // 中间的横线 (从上到下)
+
+    canvas.drawLine(
+      Offset(left + squareSide * 3, top),
+      Offset(left + squareSide * 3, top + squareSide * 2),
+      paint,
+    );
+
+    canvas.drawLine(
+      Offset(left + squareSide * 3, top + squareSide * 4),
+      Offset(left + squareSide * 3, top + squareSide * 6),
+      paint,
+    );
 
     // 左上斜线
     canvas.drawLine(
