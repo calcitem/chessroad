@@ -2,7 +2,7 @@ import 'profile.dart';
 
 class Config {
   //
-  static bool bgmEnabled = true;
+  static bool bgmEnabled = false;
   static bool toneEnabled = true;
   static int stepTime = 5000;
 
@@ -10,7 +10,7 @@ class Config {
     //
     final profile = await Profile.shared();
 
-    Config.bgmEnabled = profile['bgm-enabled'] ?? true;
+    Config.bgmEnabled = profile['bgm-enabled'] ?? false;
     Config.toneEnabled = profile['tone-enabled'] ?? true;
     Config.stepTime = profile['step-time'] ?? 5000;
 

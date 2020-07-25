@@ -38,7 +38,7 @@ class _SanmillAppState extends State<SanmillApp> {
   @override
   void initState() {
     super.initState();
-    Audios.loopBgm('bg_music.mp3');
+    //Audios.loopBgm('bg_music.mp3');
     Player.loadProfile();
   }
 
