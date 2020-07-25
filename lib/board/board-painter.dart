@@ -43,107 +43,44 @@ class BoardPainter extends PainterBase {
 
     // 外框
     paint.strokeWidth = 2;
+
     canvas.drawRect(
-      Rect.fromLTWH(left, top, gridWidth, squareSide * 9),
+      //Rect.fromLTWH(left, top, gridWidth, squareSide * 6),
+      Rect.fromLTWH(left, top, squareSide * 6, squareSide * 6),
       paint,
     );
 
-    // 中轴线
     paint.strokeWidth = 1;
-    canvas.drawLine(
-      Offset(left + gridWidth / 2, top),
-      Offset(left + gridWidth / 2, top + squareSide * 9),
-      paint,
-    );
 
     // 8 根中间的横线
-    for (var i = 1; i < 9; i++) {
+    for (var i = 1; i < 6; i++) {
       canvas.drawLine(
         Offset(left, top + squareSide * i),
-        Offset(left + gridWidth, top + squareSide * i),
+        //Offset(left + gridWidth, top + squareSide * i),
+        Offset(left + squareSide * 6, top + squareSide * i),
         paint,
       );
     }
 
     // 上下各6根短竖线
-    for (var i = 0; i < 8; i++) {
-      //
-      if (i == 4) continue; // 中间拉通的线已经画过了
-
+    for (var i = 0; i < 6; i++) {
       canvas.drawLine(
         Offset(left + squareSide * i, top),
-        Offset(left + squareSide * i, top + squareSide * 4),
-        paint,
-      );
-      canvas.drawLine(
-        Offset(left + squareSide * i, top + squareSide * 5),
-        Offset(left + squareSide * i, top + squareSide * 9),
+        Offset(left + squareSide * i, top + squareSide * 6),
         paint,
       );
     }
 
-    /*
-    // 九宫中的斜线
     canvas.drawLine(
-      Offset(left + squareSide * 3, top),
-      Offset(left + squareSide * 5, top + squareSide * 2),
-      paint,
-    );
-    canvas.drawLine(
-      Offset(left + squareSide * 5, top),
-      Offset(left + squareSide * 3, top + squareSide * 2),
-      paint,
-    );
-    canvas.drawLine(
-      Offset(left + squareSide * 3, top + squareSide * 7),
-      Offset(left + squareSide * 5, top + squareSide * 9),
-      paint,
-    );
-    canvas.drawLine(
-      Offset(left + squareSide * 5, top + squareSide * 7),
-      Offset(left + squareSide * 3, top + squareSide * 9),
-      paint,
-    );
-    */
-
-/*
-    // 炮/兵架位置指示
-    final positions = [
-      // 炮架位置指示
-      Offset(left + squareSide, top + squareSide * 2),
-      Offset(left + squareSide * 7, top + squareSide * 2),
-      Offset(left + squareSide, top + squareSide * 7),
-      Offset(left + squareSide * 7, top + squareSide * 7),
-      // 部分兵架位置指示
-      Offset(left + squareSide * 2, top + squareSide * 3),
-      Offset(left + squareSide * 4, top + squareSide * 3),
-      Offset(left + squareSide * 6, top + squareSide * 3),
-      Offset(left + squareSide * 2, top + squareSide * 6),
-      Offset(left + squareSide * 4, top + squareSide * 6),
+      Offset(left + 0, top),
       Offset(left + squareSide * 6, top + squareSide * 6),
-    ];
+      paint,
+    );
 
-    positions.forEach((pos) => canvas.drawCircle(pos, 5, paint));
-
-    // 兵架靠边位置指示
-    final leftPositions = [
-      Offset(left, top + squareSide * 3),
-      Offset(left, top + squareSide * 6),
-    ];
-    leftPositions.forEach((pos) {
-      var rect = Rect.fromCenter(center: pos, width: 10, height: 10);
-      canvas.drawArc(rect, -pi / 2, pi, true, paint);
-    });
-
-    final rightPositions = [
-      Offset(left + squareSide * 8, top + squareSide * 3),
-      Offset(left + squareSide * 8, top + squareSide * 6),
-    ];
-    rightPositions.forEach((pos) {
-      var rect = Rect.fromCenter(center: pos, width: 10, height: 10);
-      canvas.drawArc(rect, pi / 2, pi, true, paint);
-    });
-
-    */
+    canvas.drawLine(
+      Offset(left + squareSide * 6, top),
+      Offset(left + squareSide * 0, top + squareSide * 6),
+      paint,
+    );
   }
 }

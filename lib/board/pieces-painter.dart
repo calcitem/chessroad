@@ -69,11 +69,11 @@ class PiecesPainter extends PainterBase {
     final shadowPath = Path();
     final piecesToDraw = <PiecePaintStub>[];
 
-    for (var row = 0; row < 10; row++) {
+    for (var row = 0; row < 7; row++) {
       //
-      for (var column = 0; column < 9; column++) {
+      for (var column = 0; column < 7; column++) {
         //
-        final piece = phase.pieceAt(row * 9 + column);
+        final piece = phase.pieceAt(row * 7 + column);
         if (piece == Piece.Empty) continue;
 
         var pos = Offset(left + squareSide * column, top + squareSide * row);
@@ -131,7 +131,7 @@ class PiecesPainter extends PainterBase {
 
     if (focusIndex != Move.InvalidIndex) {
       //
-      final int row = focusIndex ~/ 9, column = focusIndex % 9;
+      final int row = focusIndex ~/ 7, column = focusIndex % 7;
 
       paint.color = ColorConsts.FocusPosition;
       paint.style = PaintingStyle.stroke;
@@ -146,7 +146,7 @@ class PiecesPainter extends PainterBase {
 
     if (blurIndex != Move.InvalidIndex) {
       //
-      final row = blurIndex ~/ 9, column = blurIndex % 9;
+      final row = blurIndex ~/ 7, column = blurIndex % 7;
 
       paint.color = ColorConsts.BlurPosition;
       paint.style = PaintingStyle.fill;

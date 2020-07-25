@@ -7,13 +7,13 @@ import 'words-on-board.dart';
 
 class BoardWidget extends StatelessWidget {
   //
-  static const Padding = 5.0, DigitsHeight = 20.0;
+  static const Padding = 5.0, DigitsHeight = 0.0;
 
   final double width, height;
   final Function(BuildContext, int) onBoardTap;
 
   BoardWidget({@required this.width, @required this.onBoardTap})
-      : height = (width - Padding * 2) / 9 * 10 + (Padding + DigitsHeight) * 2;
+      : height = width;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class BoardWidget extends StatelessWidget {
         child: Container(
           margin: EdgeInsets.symmetric(
             vertical: Padding,
-            horizontal: (width - Padding * 2) / 9 / 2 +
+            horizontal: (width - Padding * 2) / 7 / 2 +
             	Padding - WordsOnBoard.DigitsFontSize / 2,
           ),
           //child: WordsOnBoard(),
@@ -48,17 +48,17 @@ class BoardWidget extends StatelessWidget {
       child: boardContainer,
       onTapUp: (d) {
         //
-        final gridWidth = (width - Padding * 2) * 8 / 9;
+        final gridWidth = (width - Padding * 2) * 6 / 7;
         final squareSide = gridWidth / 8;
 
         final dx = d.localPosition.dx, dy = d.localPosition.dy;
         final row = (dy - Padding - DigitsHeight) ~/ squareSide;
         final column = (dx - Padding) ~/ squareSide;
 
-        if (row < 0 || row > 9) return;
-        if (column < 0 || column > 8) return;
+        if (row < 0 || row > 6) return;
+        if (column < 0 || column > 6) return;
 
-        onBoardTap(context, row * 9 + column);
+        onBoardTap(context, row * 7 + column);
       },
     );
   }

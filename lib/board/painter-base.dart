@@ -9,6 +9,6 @@ abstract class PainterBase extends CustomPainter {
   final gridWidth, squareSide;
 
   PainterBase({@required this.width})
-      : gridWidth = (width - BoardWidget.Padding * 2) * 8 / 9,
-        squareSide = (width - BoardWidget.Padding * 2) / 9;
+      : gridWidth = (width - BoardWidget.Padding * 2) ,
+        squareSide = (width - BoardWidget.Padding * 2) / 7;
 }

@@ -14,7 +14,7 @@ class WordsOnBoard extends StatelessWidget {
     final digitsStyle = TextStyle(fontSize: DigitsFontSize);
     final rivierTipsStyle = TextStyle(fontSize: 28.0);
 
-    for (var i = 0; i < 9; i++) {
+    for (var i = 0; i < 7; i++) {
       //
       bChildren.add(Text(blackColumns[i], style: digitsStyle));
       rChildren.add(Text(redColumns[i], style: digitsStyle));
