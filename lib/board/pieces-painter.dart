@@ -25,7 +25,7 @@ class PiecesPainter extends PainterBase {
     this.blurIndex = Move.InvalidIndex,
   }) : super(width: width) {
     //
-    pieceSide = squareSide * 0.9;
+    pieceSide = squareSide * 0.9; // 棋子大小
   }
 
   @override
@@ -38,6 +38,7 @@ class PiecesPainter extends PainterBase {
       gridWidth: gridWidth,
       squareSide: squareSide,
       pieceSide: pieceSide,
+      // 棋子放在线上中央
       offsetX: BoardWidget.Padding + squareSide / 2,
       offsetY: BoardWidget.Padding + BoardWidget.DigitsHeight + squareSide / 2,
       focusIndex: focusIndex,
@@ -69,12 +70,16 @@ class PiecesPainter extends PainterBase {
     final shadowPath = Path();
     final piecesToDraw = <PiecePaintStub>[];
 
+    // 在棋盘上画棋子
     for (var row = 0; row < 7; row++) {
       //
       for (var column = 0; column < 7; column++) {
         //
-        final piece = phase.pieceAt(row * 7 + column);
-        if (piece == Piece.Empty) continue;
+        //final piece = phase.pieceAt(row * 7 + column);
+        final piece = phase.pieceAt(row * 7 + column); // 改为9则全空
+
+        if (piece == Piece.Empty)
+          continue;
 
         var pos = Offset(left + squareSide * column, top + squareSide * row);
 
@@ -86,6 +91,7 @@ class PiecesPainter extends PainterBase {
       }
     }
 
+    // 棋子下绘制阴影
     canvas.drawShadow(shadowPath, Colors.black, 2, true);
 
     paint.style = PaintingStyle.fill;
@@ -103,11 +109,13 @@ class PiecesPainter extends PainterBase {
       //
       paint.color = Piece.isWhite(pps.piece) ? ColorConsts.WhitePieceBorderColor : ColorConsts.BlackPieceBorderColor;
 
-      canvas.drawCircle(pps.pos, pieceSide / 2, paint);
+      canvas.drawCircle(pps.pos, pieceSide / 2, paint);   // 临时调试用
 
+      // 棋子颜色
       paint.color = Piece.isWhite(pps.piece) ? ColorConsts.WhitePieceColor : ColorConsts.BlackPieceColor;
+      //paint.color = ColorConsts.WhitePieceColor;
 
-      canvas.drawCircle(pps.pos, pieceSide * 0.8 / 2, paint);
+      canvas.drawCircle(pps.pos, pieceSide * 0.8 / 2, paint); // 决定棋子外圈有宽
       /*
       final textSpan = TextSpan(text: Piece.Names[pps.piece], style: textStyle);
 
