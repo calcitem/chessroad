@@ -4,11 +4,11 @@ enum BattleResult { Pending, Win, Lose, Draw }
 class Side {
   //
   static const Unknown = '-';
-  static const Red = 'w';
+  static const White = 'w';
   static const Black = 'b';
 
   static String of(String piece) {
-    if ('RNBAKCP'.contains(piece)) return Red;
+    if ('RNBAKCP'.contains(piece)) return White;
     if ('rnbakcp'.contains(piece)) return Black;
     return Unknown;
   }
@@ -18,8 +18,8 @@ class Side {
   }
 
   static String oppo(String side) {
-    if (side == Red) return Black;
-    if (side == Black) return Red;
+    if (side == White) return Black;
+    if (side == Black) return White;
     return side;
   }
 }
@@ -28,13 +28,13 @@ class Piece {
   //
   static const Empty = ' ';
   //
-  static const RedRook = 'R';
-  static const RedKnight = 'N';
-  static const RedBishop = 'B';
-  static const RedAdvisor = 'A';
-  static const RedKing = 'K';
-  static const RedCanon = 'C';
-  static const RedPawn = 'P';
+  static const WhiteRook = 'R';
+  static const WhiteKnight = 'N';
+  static const WhiteBishop = 'B';
+  static const WhiteAdvisor = 'A';
+  static const WhiteKing = 'K';
+  static const WhiteCanon = 'C';
+  static const WhitePawn = 'P';
   //
   static const BlackRook = 'r';
   static const BlackKnight = 'n';
@@ -47,13 +47,13 @@ class Piece {
   static const Names = {
     Empty: '',
     //
-    RedRook: '车',
-    RedKnight: '马',
-    RedBishop: '相',
-    RedAdvisor: '仕',
-    RedKing: '帅',
-    RedCanon: '炮',
-    RedPawn: '兵',
+    WhiteRook: '车',
+    WhiteKnight: '马',
+    WhiteBishop: '相',
+    WhiteAdvisor: '仕',
+    WhiteKing: '帅',
+    WhiteCanon: '炮',
+    WhitePawn: '兵',
     //
     BlackRook: '车',
     BlackKnight: '马',

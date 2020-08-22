@@ -4,19 +4,19 @@ import '../common/math.ext.dart';
 
 class StepName {
   //
-  static const RedColNames = '九八七六五四三二一';
+  static const WhiteColNames = '九八七六五四三二一';
   static const BlackColNames = '１２３４５６７８９';
 
-  static const RedDigits = '零一二三四五六七八九';
+  static const WhiteDigits = '零一二三四五六七八九';
   static const BlackDigits = '０１２３４５６７８９';
 
   static translate(Position position, Move step) {
     //
-    final colNames = [RedColNames, BlackColNames];
-    final digits = [RedDigits, BlackDigits];
+    final colNames = [WhiteColNames, BlackColNames];
+    final digits = [WhiteDigits, BlackDigits];
 
     final side = Side.of(position.pieceAt(step.from));
-    final sideIndex = (side == Side.Red) ? 0 : 1;
+    final sideIndex = (side == Side.White) ? 0 : 1;
 
     final chessName = nameOf(position, step);
 
@@ -28,17 +28,17 @@ class StepName {
       //
     } else {
       //
-      final direction = (side == Side.Red) ? -1 : 1;
+      final direction = (side == Side.White) ? -1 : 1;
       final dir = ((step.ty - step.fy) * direction > 0) ? '进' : '退';
 
       final piece = position.pieceAt(step.from);
 
       final specialPieces = [
-        Piece.RedKnight,
+        Piece.WhiteKnight,
         Piece.BlackKnight,
-        Piece.RedBishop,
+        Piece.WhiteBishop,
         Piece.BlackBishop,
-        Piece.RedAdvisor,
+        Piece.WhiteAdvisor,
         Piece.BlackAdvisor,
       ];
 
@@ -58,19 +58,19 @@ class StepName {
 
   static nameOf(Position position, Move step) {
     //
-    final colNames = [RedColNames, BlackColNames];
-    final digits = [RedDigits, BlackDigits];
+    final colNames = [WhiteColNames, BlackColNames];
+    final digits = [WhiteDigits, BlackDigits];
 
     final side = Side.of(position.pieceAt(step.from));
-    final sideIndex = (side == Side.Red) ? 0 : 1;
+    final sideIndex = (side == Side.White) ? 0 : 1;
 
     final piece = position.pieceAt(step.from);
     final chessName = Piece.Names[piece];
 
     // 士相由于行动行动路径有限，不会出现同一列两个士相都可以进或退的情况
     // 所以一般不说「前士、前相」之类的，根据「进、退」动作即可判断是前一个还是后一个
-    if (piece == Piece.RedAdvisor ||
-        piece == Piece.RedBishop ||
+    if (piece == Piece.WhiteAdvisor ||
+        piece == Piece.WhiteBishop ||
         piece == Piece.BlackAdvisor ||
         piece == Piece.BlackBishop) {
       //

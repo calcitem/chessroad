@@ -43,11 +43,11 @@ class ChessRules {
         final piece = tempPosition.pieceAt(row * 9 + col);
 
         if (!foundKingAlready) {
-          if (piece == Piece.RedKing || piece == Piece.BlackKing)
+          if (piece == Piece.WhiteKing || piece == Piece.BlackKing)
             foundKingAlready = true;
           if (row > 2) break;
         } else {
-          if (piece == Piece.RedKing || piece == Piece.BlackKing) return true;
+          if (piece == Piece.WhiteKing || piece == Piece.BlackKing) return true;
           if (piece != Piece.Empty) break;
         }
       }
@@ -73,7 +73,7 @@ class ChessRules {
       //
       final piece = position.pieceAt(i);
 
-      if (piece == Piece.RedKing || piece == Piece.BlackKing) {
+      if (piece == Piece.WhiteKing || piece == Piece.BlackKing) {
         if (position.side == Side.of(piece)) return i;
       }
     }

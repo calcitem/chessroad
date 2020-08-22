@@ -19,19 +19,19 @@ class StepsEnumerator {
 
         var pieceSteps;
 
-        if (piece == Piece.RedKing || piece == Piece.BlackKing) {
+        if (piece == Piece.WhiteKing || piece == Piece.BlackKing) {
           pieceSteps = enumKingSteps(position, row, col, from);
-        } else if (piece == Piece.RedAdvisor || piece == Piece.BlackAdvisor) {
+        } else if (piece == Piece.WhiteAdvisor || piece == Piece.BlackAdvisor) {
           pieceSteps = enumAdvisorSteps(position, row, col, from);
-        } else if (piece == Piece.RedBishop || piece == Piece.BlackBishop) {
+        } else if (piece == Piece.WhiteBishop || piece == Piece.BlackBishop) {
           pieceSteps = enumBishopSteps(position, row, col, from);
-        } else if (piece == Piece.RedKnight || piece == Piece.BlackKnight) {
+        } else if (piece == Piece.WhiteKnight || piece == Piece.BlackKnight) {
           pieceSteps = enumKnightSteps(position, row, col, from);
-        } else if (piece == Piece.RedRook || piece == Piece.BlackRook) {
+        } else if (piece == Piece.WhiteRook || piece == Piece.BlackRook) {
           pieceSteps = enumRookSteps(position, row, col, from);
-        } else if (piece == Piece.RedCanon || piece == Piece.BlackCanon) {
+        } else if (piece == Piece.WhiteCanon || piece == Piece.BlackCanon) {
           pieceSteps = enumCanonSteps(position, row, col, from);
-        } else if (piece == Piece.RedPawn || piece == Piece.BlackPawn) {
+        } else if (piece == Piece.WhitePawn || piece == Piece.BlackPawn) {
           pieceSteps = enumPawnSteps(position, row, col, from);
         } else {
           continue;
@@ -56,7 +56,7 @@ class StepsEnumerator {
 
     final redRange = [66, 67, 68, 75, 76, 77, 84, 85, 86];
     final blackRange = [3, 4, 5, 12, 13, 14, 21, 22, 23];
-    final range = (position.side == Side.Red ? redRange : blackRange);
+    final range = (position.side == Side.White ? redRange : blackRange);
 
     final steps = <Move>[];
 
@@ -89,7 +89,7 @@ class StepsEnumerator {
 
     final redRange = [66, 68, 76, 84, 86];
     final blackRange = [3, 5, 13, 21, 23];
-    final range = position.side == Side.Red ? redRange : blackRange;
+    final range = position.side == Side.White ? redRange : blackRange;
 
     final steps = <Move>[];
 
@@ -129,7 +129,7 @@ class StepsEnumerator {
 
     final redRange = [47, 51, 63, 67, 71, 83, 87];
     final blackRange = [2, 6, 18, 22, 26, 38, 42];
-    final range = position.side == Side.Red ? redRange : blackRange;
+    final range = position.side == Side.White ? redRange : blackRange;
 
     final steps = <Move>[];
 
@@ -379,7 +379,7 @@ class StepsEnumerator {
   static List<Move> enumPawnSteps(
       Position position, int row, int col, int from) {
     //
-    var to = (row + (position.side == Side.Red ? -1 : 1)) * 9 + col;
+    var to = (row + (position.side == Side.White ? -1 : 1)) * 9 + col;
 
     final steps = <Move>[];
 
@@ -387,7 +387,7 @@ class StepsEnumerator {
       steps.add(Move(from, to));
     }
 
-    if ((position.side == Side.Red && row < 5) ||
+    if ((position.side == Side.White && row < 5) ||
         (position.side == Side.Black && row > 4)) {
       //
       if (col > 0) {

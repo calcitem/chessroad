@@ -18,7 +18,7 @@ class Position {
 
   void initDefaultPosition() {
     //
-    _side = Side.Red;
+    _side = Side.White;
     _pieces = List<String>(90);
 
     _pieces[0 * 9 + 0] = Piece.BlackRook;
@@ -40,24 +40,24 @@ class Position {
     _pieces[3 * 9 + 6] = Piece.BlackPawn;
     _pieces[3 * 9 + 8] = Piece.BlackPawn;
 
-    _pieces[9 * 9 + 0] = Piece.RedRook;
-    _pieces[9 * 9 + 1] = Piece.RedKnight;
-    _pieces[9 * 9 + 2] = Piece.RedBishop;
-    _pieces[9 * 9 + 3] = Piece.RedAdvisor;
-    _pieces[9 * 9 + 4] = Piece.RedKing;
-    _pieces[9 * 9 + 5] = Piece.RedAdvisor;
-    _pieces[9 * 9 + 6] = Piece.RedBishop;
-    _pieces[9 * 9 + 7] = Piece.RedKnight;
-    _pieces[9 * 9 + 8] = Piece.RedRook;
+    _pieces[9 * 9 + 0] = Piece.WhiteRook;
+    _pieces[9 * 9 + 1] = Piece.WhiteKnight;
+    _pieces[9 * 9 + 2] = Piece.WhiteBishop;
+    _pieces[9 * 9 + 3] = Piece.WhiteAdvisor;
+    _pieces[9 * 9 + 4] = Piece.WhiteKing;
+    _pieces[9 * 9 + 5] = Piece.WhiteAdvisor;
+    _pieces[9 * 9 + 6] = Piece.WhiteBishop;
+    _pieces[9 * 9 + 7] = Piece.WhiteKnight;
+    _pieces[9 * 9 + 8] = Piece.WhiteRook;
 
-    _pieces[7 * 9 + 1] = Piece.RedCanon;
-    _pieces[7 * 9 + 7] = Piece.RedCanon;
+    _pieces[7 * 9 + 1] = Piece.WhiteCanon;
+    _pieces[7 * 9 + 7] = Piece.WhiteCanon;
 
-    _pieces[6 * 9 + 0] = Piece.RedPawn;
-    _pieces[6 * 9 + 2] = Piece.RedPawn;
-    _pieces[6 * 9 + 4] = Piece.RedPawn;
-    _pieces[6 * 9 + 6] = Piece.RedPawn;
-    _pieces[6 * 9 + 8] = Piece.RedPawn;
+    _pieces[6 * 9 + 0] = Piece.WhitePawn;
+    _pieces[6 * 9 + 2] = Piece.WhitePawn;
+    _pieces[6 * 9 + 4] = Piece.WhitePawn;
+    _pieces[6 * 9 + 6] = Piece.WhitePawn;
+    _pieces[6 * 9 + 8] = Piece.WhitePawn;
 
     for (var i = 0; i < 90; i++) {
       _pieces[i] ??= Piece.Empty;
