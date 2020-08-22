@@ -1,10 +1,10 @@
 import '../common/math.ext.dart';
 import 'cc-base.dart';
-import 'phase.dart';
+import 'position.dart';
 
 class StepsEnumerator {
   //
-  static List<Move> enumSteps(Phase phase) {
+  static List<Move> enumSteps(Position position) {
     //
     final steps = <Move>[];
 
@@ -13,26 +13,26 @@ class StepsEnumerator {
       for (var col = 0; col < 9; col++) {
         //
         final from = row * 9 + col;
-        final piece = phase.pieceAt(from);
+        final piece = position.pieceAt(from);
 
-        if (Side.of(piece) != phase.side) continue;
+        if (Side.of(piece) != position.side) continue;
 
         var pieceSteps;
 
         if (piece == Piece.RedKing || piece == Piece.BlackKing) {
-          pieceSteps = enumKingSteps(phase, row, col, from);
+          pieceSteps = enumKingSteps(position, row, col, from);
         } else if (piece == Piece.RedAdvisor || piece == Piece.BlackAdvisor) {
-          pieceSteps = enumAdvisorSteps(phase, row, col, from);
+          pieceSteps = enumAdvisorSteps(position, row, col, from);
         } else if (piece == Piece.RedBishop || piece == Piece.BlackBishop) {
-          pieceSteps = enumBishopSteps(phase, row, col, from);
+          pieceSteps = enumBishopSteps(position, row, col, from);
         } else if (piece == Piece.RedKnight || piece == Piece.BlackKnight) {
-          pieceSteps = enumKnightSteps(phase, row, col, from);
+          pieceSteps = enumKnightSteps(position, row, col, from);
         } else if (piece == Piece.RedRook || piece == Piece.BlackRook) {
-          pieceSteps = enumRookSteps(phase, row, col, from);
+          pieceSteps = enumRookSteps(position, row, col, from);
         } else if (piece == Piece.RedCanon || piece == Piece.BlackCanon) {
-          pieceSteps = enumCanonSteps(phase, row, col, from);
+          pieceSteps = enumCanonSteps(position, row, col, from);
         } else if (piece == Piece.RedPawn || piece == Piece.BlackPawn) {
-          pieceSteps = enumPawnSteps(phase, row, col, from);
+          pieceSteps = enumPawnSteps(position, row, col, from);
         } else {
           continue;
         }
@@ -44,7 +44,8 @@ class StepsEnumerator {
     return steps;
   }
 
-  static List<Move> enumKingSteps(Phase phase, int row, int col, int from) {
+  static List<Move> enumKingSteps(
+      Position position, int row, int col, int from) {
     //
     final offsetList = [
       [-1, 0],
@@ -55,7 +56,7 @@ class StepsEnumerator {
 
     final redRange = [66, 67, 68, 75, 76, 77, 84, 85, 86];
     final blackRange = [3, 4, 5, 12, 13, 14, 21, 22, 23];
-    final range = (phase.side == Side.Red ? redRange : blackRange);
+    final range = (position.side == Side.Red ? redRange : blackRange);
 
     final steps = <Move>[];
 
@@ -64,7 +65,7 @@ class StepsEnumerator {
       final offset = offsetList[i];
       final to = (row + offset[0]) * 9 + col + offset[1];
 
-      if (!posOnBoard(to) || Side.of(phase.pieceAt(to)) == phase.side) {
+      if (!posOnBoard(to) || Side.of(position.pieceAt(to)) == position.side) {
         continue;
       }
 
@@ -76,7 +77,8 @@ class StepsEnumerator {
     return steps;
   }
 
-  static List<Move> enumAdvisorSteps(Phase phase, int row, int col, int from) {
+  static List<Move> enumAdvisorSteps(
+      Position position, int row, int col, int from) {
     //
     final offsetList = [
       [-1, -1],
@@ -87,7 +89,7 @@ class StepsEnumerator {
 
     final redRange = [66, 68, 76, 84, 86];
     final blackRange = [3, 5, 13, 21, 23];
-    final range = phase.side == Side.Red ? redRange : blackRange;
+    final range = position.side == Side.Red ? redRange : blackRange;
 
     final steps = <Move>[];
 
@@ -96,7 +98,7 @@ class StepsEnumerator {
       final offset = offsetList[i];
       final to = (row + offset[0]) * 9 + col + offset[1];
 
-      if (!posOnBoard(to) || Side.of(phase.pieceAt(to)) == phase.side) {
+      if (!posOnBoard(to) || Side.of(position.pieceAt(to)) == position.side) {
         continue;
       }
 
@@ -108,7 +110,8 @@ class StepsEnumerator {
     return steps;
   }
 
-  static List<Move> enumBishopSteps(Phase phase, int row, int col, int from) {
+  static List<Move> enumBishopSteps(
+      Position position, int row, int col, int from) {
     //
     final heartOffsetList = [
       [-1, -1],
@@ -126,7 +129,7 @@ class StepsEnumerator {
 
     final redRange = [47, 51, 63, 67, 71, 83, 87];
     final blackRange = [2, 6, 18, 22, 26, 38, 42];
-    final range = phase.side == Side.Red ? redRange : blackRange;
+    final range = position.side == Side.Red ? redRange : blackRange;
 
     final steps = <Move>[];
 
@@ -135,14 +138,14 @@ class StepsEnumerator {
       final heartOffset = heartOffsetList[i];
       final heart = (row + heartOffset[0]) * 9 + (col + heartOffset[1]);
 
-      if (!posOnBoard(heart) || phase.pieceAt(heart) != Piece.Empty) {
+      if (!posOnBoard(heart) || position.pieceAt(heart) != Piece.Empty) {
         continue;
       }
 
       final offset = offsetList[i];
       final to = (row + offset[0]) * 9 + (col + offset[1]);
 
-      if (!posOnBoard(to) || Side.of(phase.pieceAt(to)) == phase.side) {
+      if (!posOnBoard(to) || Side.of(position.pieceAt(to)) == position.side) {
         continue;
       }
 
@@ -154,7 +157,8 @@ class StepsEnumerator {
     return steps;
   }
 
-  static List<Move> enumKnightSteps(Phase phase, int row, int col, int from) {
+  static List<Move> enumKnightSteps(
+      Position position, int row, int col, int from) {
     //
     final offsetList = [
       [-2, -1],
@@ -187,7 +191,7 @@ class StepsEnumerator {
       if (nr < 0 || nr > 9 || nc < 0 || nc > 9) continue;
 
       final to = nr * 9 + nc;
-      if (!posOnBoard(to) || Side.of(phase.pieceAt(to)) == phase.side) {
+      if (!posOnBoard(to) || Side.of(position.pieceAt(to)) == position.side) {
         continue;
       }
 
@@ -195,7 +199,7 @@ class StepsEnumerator {
       final fr = row + footOffset[0], fc = col + footOffset[1];
       final foot = fr * 9 + fc;
 
-      if (!posOnBoard(foot) || phase.pieceAt(foot) != Piece.Empty) {
+      if (!posOnBoard(foot) || position.pieceAt(foot) != Piece.Empty) {
         continue;
       }
 
@@ -205,19 +209,20 @@ class StepsEnumerator {
     return steps;
   }
 
-  static List<Move> enumRookSteps(Phase phase, int row, int col, int from) {
+  static List<Move> enumRookSteps(
+      Position position, int row, int col, int from) {
     //
     final steps = <Move>[];
 
     // to left
     for (var c = col - 1; c >= 0; c--) {
       final to = row * 9 + c;
-      final target = phase.pieceAt(to);
+      final target = position.pieceAt(to);
 
       if (target == Piece.Empty) {
         steps.add(Move(from, to));
       } else {
-        if (Side.of(target) != phase.side) {
+        if (Side.of(target) != position.side) {
           steps.add(Move(from, to));
         }
         break;
@@ -227,12 +232,12 @@ class StepsEnumerator {
     // to top
     for (var r = row - 1; r >= 0; r--) {
       final to = r * 9 + col;
-      final target = phase.pieceAt(to);
+      final target = position.pieceAt(to);
 
       if (target == Piece.Empty) {
         steps.add(Move(from, to));
       } else {
-        if (Side.of(target) != phase.side) {
+        if (Side.of(target) != position.side) {
           steps.add(Move(from, to));
         }
         break;
@@ -242,12 +247,12 @@ class StepsEnumerator {
     // to right
     for (var c = col + 1; c < 9; c++) {
       final to = row * 9 + c;
-      final target = phase.pieceAt(to);
+      final target = position.pieceAt(to);
 
       if (target == Piece.Empty) {
         steps.add(Move(from, to));
       } else {
-        if (Side.of(target) != phase.side) {
+        if (Side.of(target) != position.side) {
           steps.add(Move(from, to));
         }
         break;
@@ -257,12 +262,12 @@ class StepsEnumerator {
     // to down
     for (var r = row + 1; r < 10; r++) {
       final to = r * 9 + col;
-      final target = phase.pieceAt(to);
+      final target = position.pieceAt(to);
 
       if (target == Piece.Empty) {
         steps.add(Move(from, to));
       } else {
-        if (Side.of(target) != phase.side) {
+        if (Side.of(target) != position.side) {
           steps.add(Move(from, to));
         }
         break;
@@ -272,7 +277,8 @@ class StepsEnumerator {
     return steps;
   }
 
-  static List<Move> enumCanonSteps(Phase phase, int row, int col, int from) {
+  static List<Move> enumCanonSteps(
+      Position position, int row, int col, int from) {
     //
     final steps = <Move>[];
     // to left
@@ -280,7 +286,7 @@ class StepsEnumerator {
 
     for (var c = col - 1; c >= 0; c--) {
       final to = row * 9 + c;
-      final target = phase.pieceAt(to);
+      final target = position.pieceAt(to);
 
       if (!overPiece) {
         if (target == Piece.Empty) {
@@ -290,7 +296,7 @@ class StepsEnumerator {
         }
       } else {
         if (target != Piece.Empty) {
-          if (Side.of(target) != phase.side) {
+          if (Side.of(target) != position.side) {
             steps.add(Move(from, to));
           }
           break;
@@ -303,7 +309,7 @@ class StepsEnumerator {
 
     for (var r = row - 1; r >= 0; r--) {
       final to = r * 9 + col;
-      final target = phase.pieceAt(to);
+      final target = position.pieceAt(to);
 
       if (!overPiece) {
         if (target == Piece.Empty) {
@@ -313,7 +319,7 @@ class StepsEnumerator {
         }
       } else {
         if (target != Piece.Empty) {
-          if (Side.of(target) != phase.side) {
+          if (Side.of(target) != position.side) {
             steps.add(Move(from, to));
           }
           break;
@@ -326,7 +332,7 @@ class StepsEnumerator {
 
     for (var c = col + 1; c < 9; c++) {
       final to = row * 9 + c;
-      final target = phase.pieceAt(to);
+      final target = position.pieceAt(to);
 
       if (!overPiece) {
         if (target == Piece.Empty) {
@@ -336,7 +342,7 @@ class StepsEnumerator {
         }
       } else {
         if (target != Piece.Empty) {
-          if (Side.of(target) != phase.side) {
+          if (Side.of(target) != position.side) {
             steps.add(Move(from, to));
           }
           break;
@@ -349,7 +355,7 @@ class StepsEnumerator {
 
     for (var r = row + 1; r < 10; r++) {
       final to = r * 9 + col;
-      final target = phase.pieceAt(to);
+      final target = position.pieceAt(to);
 
       if (!overPiece) {
         if (target == Piece.Empty) {
@@ -359,7 +365,7 @@ class StepsEnumerator {
         }
       } else {
         if (target != Piece.Empty) {
-          if (Side.of(target) != phase.side) {
+          if (Side.of(target) != position.side) {
             steps.add(Move(from, to));
           }
           break;
@@ -370,28 +376,30 @@ class StepsEnumerator {
     return steps;
   }
 
-  static List<Move> enumPawnSteps(Phase phase, int row, int col, int from) {
+  static List<Move> enumPawnSteps(
+      Position position, int row, int col, int from) {
     //
-    var to = (row + (phase.side == Side.Red ? -1 : 1)) * 9 + col;
+    var to = (row + (position.side == Side.Red ? -1 : 1)) * 9 + col;
 
     final steps = <Move>[];
 
-    if (posOnBoard(to) && Side.of(phase.pieceAt(to)) != phase.side) {
+    if (posOnBoard(to) && Side.of(position.pieceAt(to)) != position.side) {
       steps.add(Move(from, to));
     }
 
-    if ((phase.side == Side.Red && row < 5) || (phase.side == Side.Black && row > 4)) {
+    if ((position.side == Side.Red && row < 5) ||
+        (position.side == Side.Black && row > 4)) {
       //
       if (col > 0) {
         to = row * 9 + col - 1;
-        if (posOnBoard(to) && Side.of(phase.pieceAt(to)) != phase.side) {
+        if (posOnBoard(to) && Side.of(position.pieceAt(to)) != position.side) {
           steps.add(Move(from, to));
         }
       }
 
       if (col < 8) {
         to = row * 9 + col + 1;
-        if (posOnBoard(to) && Side.of(phase.pieceAt(to)) != phase.side) {
+        if (posOnBoard(to) && Side.of(position.pieceAt(to)) != position.side) {
           steps.add(Move(from, to));
         }
       }

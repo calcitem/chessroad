@@ -1,5 +1,5 @@
 import 'cc-base.dart';
-import 'phase.dart';
+import 'position.dart';
 import '../common/math.ext.dart';
 
 class StepName {
@@ -10,15 +10,15 @@ class StepName {
   static const RedDigits = '零一二三四五六七八九';
   static const BlackDigits = '０１２３４５６７８９';
 
-  static translate(Phase phase, Move step) {
+  static translate(Position position, Move step) {
     //
     final colNames = [RedColNames, BlackColNames];
     final digits = [RedDigits, BlackDigits];
 
-    final side = Side.of(phase.pieceAt(step.from));
+    final side = Side.of(position.pieceAt(step.from));
     final sideIndex = (side == Side.Red) ? 0 : 1;
 
-    final chessName = nameOf(phase, step);
+    final chessName = nameOf(position, step);
 
     String result = chessName;
 
@@ -31,7 +31,7 @@ class StepName {
       final direction = (side == Side.Red) ? -1 : 1;
       final dir = ((step.ty - step.fy) * direction > 0) ? '进' : '退';
 
-      final piece = phase.pieceAt(step.from);
+      final piece = position.pieceAt(step.from);
 
       final specialPieces = [
         Piece.RedKnight,
@@ -56,15 +56,15 @@ class StepName {
     return step.stepName = result;
   }
 
-  static nameOf(Phase phase, Move step) {
+  static nameOf(Position position, Move step) {
     //
     final colNames = [RedColNames, BlackColNames];
     final digits = [RedDigits, BlackDigits];
 
-    final side = Side.of(phase.pieceAt(step.from));
+    final side = Side.of(position.pieceAt(step.from));
     final sideIndex = (side == Side.Red) ? 0 : 1;
 
-    final piece = phase.pieceAt(step.from);
+    final piece = position.pieceAt(step.from);
     final chessName = Piece.Names[piece];
 
     // 士相由于行动行动路径有限，不会出现同一列两个士相都可以进或退的情况
@@ -79,7 +79,7 @@ class StepName {
 
     // 此 Map 的 Key 为「列」， Value 为此列上出现所查寻棋子的 y 坐标（row）列表
     // 返回结果中进行了过滤，如果某一列包含所查寻棋子的数量 < 2，此列不包含在返回结果中
-    final Map<int, List<int>> cols = findPieceSameCol(phase, piece);
+    final Map<int, List<int>> cols = findPieceSameCol(position, piece);
     final fyIndexes = cols[step.fx];
 
     // 正在动棋的这一列不包含多个同类棋子
@@ -135,14 +135,14 @@ class StepName {
     return '错误招法';
   }
 
-  static findPieceSameCol(Phase phase, String piece) {
+  static findPieceSameCol(Position position, String piece) {
     //
     final map = Map<int, List<int>>();
 
     for (var row = 0; row < 10; row++) {
       for (var col = 0; col < 9; col++) {
         //
-        if (phase.pieceAt(row * 9 + col) == piece) {
+        if (position.pieceAt(row * 9 + col) == piece) {
           //
           var fyIndexes = map[col] ?? [];
           fyIndexes.add(row);

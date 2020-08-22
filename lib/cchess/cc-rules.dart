@@ -1,18 +1,18 @@
 import 'cc-base.dart';
-import 'phase.dart';
+import 'position.dart';
 import 'step-enum.dart';
 import 'steps-validate.dart';
 
 class ChessRules {
   //
-  static checked(Phase phase) {
+  static checked(Position position) {
     //
-    final myKingPos = findKingPos(phase);
+    final myKingPos = findKingPos(position);
 
-    final oppoPhase = Phase.clone(phase);
-    oppoPhase.trunSide();
+    final oppoPosition = Position.clone(position);
+    oppoPosition.trunSide();
 
-    final oppoSteps = StepsEnumerator.enumSteps(oppoPhase);
+    final oppoSteps = StepsEnumerator.enumSteps(oppoPosition);
 
     for (var step in oppoSteps) {
       if (step.to == myKingPos) return true;
@@ -21,18 +21,18 @@ class ChessRules {
     return false;
   }
 
-  static willBeChecked(Phase phase, Move move) {
+  static willBeChecked(Position position, Move move) {
     //
-    final tempPhase = Phase.clone(phase);
-    tempPhase.moveTest(move);
+    final tempPosition = Position.clone(position);
+    tempPosition.moveTest(move);
 
-    return checked(tempPhase);
+    return checked(tempPosition);
   }
 
-  static willKingsMeeting(Phase phase, Move move) {
+  static willKingsMeeting(Position position, Move move) {
     //
-    final tempPhase = Phase.clone(phase);
-    tempPhase.moveTest(move);
+    final tempPosition = Position.clone(position);
+    tempPosition.moveTest(move);
 
     for (var col = 3; col < 6; col++) {
       //
@@ -40,10 +40,11 @@ class ChessRules {
 
       for (var row = 0; row < 10; row++) {
         //
-        final piece = tempPhase.pieceAt(row * 9 + col);
+        final piece = tempPosition.pieceAt(row * 9 + col);
 
         if (!foundKingAlready) {
-          if (piece == Piece.RedKing || piece == Piece.BlackKing) foundKingAlready = true;
+          if (piece == Piece.RedKing || piece == Piece.BlackKing)
+            foundKingAlready = true;
           if (row > 2) break;
         } else {
           if (piece == Piece.RedKing || piece == Piece.BlackKing) return true;
@@ -55,25 +56,25 @@ class ChessRules {
     return false;
   }
 
-  static bool beKilled(Phase phase) {
+  static bool beKilled(Position position) {
     //
-    List<Move> steps = StepsEnumerator.enumSteps(phase);
+    List<Move> steps = StepsEnumerator.enumSteps(position);
 
     for (var step in steps) {
-      if (StepValidate.validate(phase, step)) return false;
+      if (StepValidate.validate(position, step)) return false;
     }
 
     return true;
   }
 
-  static int findKingPos(Phase phase) {
+  static int findKingPos(Position position) {
     //
     for (var i = 0; i < 90; i++) {
       //
-      final piece = phase.pieceAt(i);
+      final piece = position.pieceAt(i);
 
       if (piece == Piece.RedKing || piece == Piece.BlackKing) {
-        if (phase.side == Side.of(piece)) return i;
+        if (position.side == Side.of(piece)) return i;
       }
     }
 

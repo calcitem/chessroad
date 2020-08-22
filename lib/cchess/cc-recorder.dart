@@ -1,14 +1,14 @@
 import 'cc-base.dart';
-import 'phase.dart';
+import 'position.dart';
 
 class CCRecorder {
   //
   // 无吃子步数、总回合数
   int halfMove, fullMove;
-  String lastCapturedPhase;
+  String lastCapturedPosition;
   final _history = <Move>[];
 
-  CCRecorder({this.halfMove = 0, this.fullMove = 0, this.lastCapturedPhase});
+  CCRecorder({this.halfMove = 0, this.fullMove = 0, this.lastCapturedPosition});
   CCRecorder.fromCounterMarks(String marks) {
     //
     var segments = marks.split(' ');
@@ -23,7 +23,7 @@ class CCRecorder {
       throw 'Error: Invalid Counter Marks: $marks';
     }
   }
-  void stepIn(Move move, Phase phase) {
+  void stepIn(Move move, Position position) {
     //
     if (move.captured != Piece.Empty) {
       halfMove = 0;
@@ -33,14 +33,14 @@ class CCRecorder {
 
     if (fullMove == 0) {
       fullMove++;
-    } else if (phase.side != Side.Black) {
+    } else if (position.side != Side.Black) {
       fullMove++;
     }
 
     _history.add(move);
 
     if (move.captured != Piece.Empty) {
-      lastCapturedPhase = phase.toFen();
+      lastCapturedPosition = position.toFen();
     }
   }
 

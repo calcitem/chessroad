@@ -4,7 +4,7 @@ import 'cc-base.dart';
 import 'step-name.dart';
 import 'steps-validate.dart';
 
-class Phase {
+class Position {
   //
   BattleResult result = BattleResult.Pending;
 
@@ -12,11 +12,11 @@ class Phase {
   List<String> _pieces; // 10 行，9 列
   CCRecorder _recorder;
 
-  Phase.defaultPhase() {
-    initDefaultPhase();
+  Position.defaultPosition() {
+    initDefaultPosition();
   }
 
-  void initDefaultPhase() {
+  void initDefaultPosition() {
     //
     _side = Side.Red;
     _pieces = List<String>(90);
@@ -63,10 +63,10 @@ class Phase {
       _pieces[i] ??= Piece.Empty;
     }
 
-    _recorder = CCRecorder(lastCapturedPhase: toFen());
+    _recorder = CCRecorder(lastCapturedPosition: toFen());
   }
 
-  Phase.clone(Phase other) {
+  Position.clone(Position other) {
     //
     _pieces = List<String>();
 
@@ -133,18 +133,18 @@ class Phase {
     if (lastMove.captured != Piece.Empty) {
       //
       // 查找上一个吃子局面（或开局），NativeEngine 需要
-      final tempPhase = Phase.clone(this);
+      final tempPosition = Position.clone(this);
 
       final moves = _recorder.reverseMovesToPrevCapture();
       moves.forEach((move) {
         //
-        tempPhase._pieces[move.from] = tempPhase._pieces[move.to];
-        tempPhase._pieces[move.to] = move.captured;
+        tempPosition._pieces[move.from] = tempPosition._pieces[move.to];
+        tempPosition._pieces[move.to] = move.captured;
 
-        tempPhase._side = Side.oppo(tempPhase._side);
+        tempPosition._side = Side.oppo(tempPosition._side);
       });
 
-      _recorder.lastCapturedPhase = tempPhase.toFen();
+      _recorder.lastCapturedPosition = tempPosition.toFen();
     }
 
     result = BattleResult.Pending;
@@ -225,5 +225,5 @@ class Phase {
 
   get lastMove => _recorder.last;
 
-  get lastCapturedPhase => _recorder.lastCapturedPhase;
+  get lastCapturedPosition => _recorder.lastCapturedPosition;
 }
