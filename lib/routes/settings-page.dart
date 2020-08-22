@@ -104,10 +104,12 @@ class _SettingsPageState extends State<SettingsPage> {
     Config.save();
   }
 
-    changeName() async {
+  changeName() async {
     //
     final newName = await Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) => EditPage('棋手姓名', initValue: Player.shared.name)),
+      MaterialPageRoute(
+          builder: (context) =>
+              EditPage('棋手姓名', initValue: Player.shared.name)),
     );
 
     if (newName != null) nameChanged(newName);
@@ -137,18 +139,6 @@ class _SettingsPageState extends State<SettingsPage> {
             Text('版本', style: TextStyle(fontFamily: '')),
             Text('$_version', style: TextStyle(fontFamily: '')),
             SizedBox(height: 15),
-            Text('QQ群', style: TextStyle(fontFamily: '')),
-            GestureDetector(
-              onTap: () {
-                Clipboard.setData(ClipboardData(text: '696994992'));
-                Toast.toast(context, msg: '群号已复制！');
-              },
-              child: Text(
-                "67220535",
-                style: TextStyle(fontFamily: '', color: Colors.blue),
-              ),
-            ),
-            SizedBox(height: 15),
             Text('官网', style: TextStyle(fontFamily: '')),
             GestureDetector(
               onTap: () {
@@ -165,7 +155,8 @@ class _SettingsPageState extends State<SettingsPage> {
           ],
         ),
         actions: <Widget>[
-          FlatButton(child: Text('好的'), onPressed: () => Navigator.of(context).pop()),
+          FlatButton(
+              child: Text('好的'), onPressed: () => Navigator.of(context).pop()),
         ],
       ),
     );
@@ -174,7 +165,8 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     //
-    final TextStyle headerStyle = TextStyle(color: ColorConsts.Secondary, fontSize: 20.0);
+    final TextStyle headerStyle =
+        TextStyle(color: ColorConsts.Secondary, fontSize: 20.0);
     final TextStyle itemStyle = TextStyle(color: ColorConsts.Primary);
 
     return Scaffold(
@@ -196,9 +188,13 @@ class _SettingsPageState extends State<SettingsPage> {
                 children: <Widget>[
                   ListTile(
                     title: Text("游戏难度", style: itemStyle),
-                    trailing: Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
-                      Text(Config.stepTime <= 5000 ? '初级' : Config.stepTime <= 15000 ? '中级' : '高级'),
-                      Icon(Icons.keyboard_arrow_right, color: ColorConsts.Secondary),
+                    trailing:
+                        Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
+                      Text(Config.stepTime <= 5000
+                          ? '初级'
+                          : Config.stepTime <= 15000 ? '中级' : '高级'),
+                      Icon(Icons.keyboard_arrow_right,
+                          color: ColorConsts.Secondary),
                     ]),
                     onTap: changeDifficult,
                   ),
@@ -237,9 +233,11 @@ class _SettingsPageState extends State<SettingsPage> {
                 children: <Widget>[
                   ListTile(
                     title: Text("棋手姓名", style: itemStyle),
-                    trailing: Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
+                    trailing:
+                        Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
                       Text(Player.shared.name),
-                      Icon(Icons.keyboard_arrow_right, color: ColorConsts.Secondary),
+                      Icon(Icons.keyboard_arrow_right,
+                          color: ColorConsts.Secondary),
                     ]),
                     onTap: changeName,
                   ),
@@ -255,9 +253,11 @@ class _SettingsPageState extends State<SettingsPage> {
                 children: <Widget>[
                   ListTile(
                     title: Text("关于「直棋」", style: itemStyle),
-                    trailing: Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
+                    trailing:
+                        Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
                       Text(_version ?? ''),
-                      Icon(Icons.keyboard_arrow_right, color: ColorConsts.Secondary),
+                      Icon(Icons.keyboard_arrow_right,
+                          color: ColorConsts.Secondary),
                     ]),
                     onTap: showAbout,
                   ),

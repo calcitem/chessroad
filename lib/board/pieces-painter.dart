@@ -78,8 +78,7 @@ class PiecesPainter extends PainterBase {
         //final piece = phase.pieceAt(row * 7 + column);
         final piece = phase.pieceAt(row * 7 + column); // 改为9则全空
 
-        if (piece == Piece.Empty)
-          continue;
+        if (piece == Piece.Empty) continue;
 
         var pos = Offset(left + squareSide * column, top + squareSide * row);
 
@@ -107,12 +106,16 @@ class PiecesPainter extends PainterBase {
 
     piecesToDraw.forEach((pps) {
       //
-      paint.color = Piece.isWhite(pps.piece) ? ColorConsts.WhitePieceBorderColor : ColorConsts.BlackPieceBorderColor;
+      paint.color = Piece.isWhite(pps.piece)
+          ? ColorConsts.WhitePieceBorderColor
+          : ColorConsts.BlackPieceBorderColor;
 
-      canvas.drawCircle(pps.pos, pieceSide / 2, paint);   // 临时调试用
+      canvas.drawCircle(pps.pos, pieceSide / 2, paint); // 临时调试用
 
       // 棋子颜色
-      paint.color = Piece.isWhite(pps.piece) ? ColorConsts.WhitePieceColor : ColorConsts.BlackPieceColor;
+      paint.color = Piece.isWhite(pps.piece)
+          ? ColorConsts.WhitePieceColor
+          : ColorConsts.BlackPieceColor;
       //paint.color = ColorConsts.WhitePieceColor;
 
       canvas.drawCircle(pps.pos, pieceSide * 0.8 / 2, paint); // 决定棋子外圈有宽

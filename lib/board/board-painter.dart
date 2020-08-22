@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import '../board/painter-base.dart';
 import '../common/color-consts.dart';
@@ -38,7 +37,8 @@ class BoardPainter extends PainterBase {
     paint.color = ColorConsts.BoardLine;
     paint.style = PaintingStyle.stroke;
 
-    var left = offsetX, top = offsetY;
+    var left = offsetX;
+    var top = offsetY;
 
     // 外框
     paint.strokeWidth = 2;
@@ -158,6 +158,5 @@ class BoardPainter extends PainterBase {
       Offset(left + squareSide * 0, top + squareSide * 6),
       paint,
     );
-
   }
 }
