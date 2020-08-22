@@ -1,14 +1,14 @@
-import '../cchess/cc-base.dart';
-import '../cchess/phase.dart';
+import '../mill/mill-base.dart';
+import '../mill/position.dart';
 import 'analysis.dart';
-import 'chess-db.dart';
+import 'mill-db.dart';
 import 'engine.dart';
 
 class CloudEngine extends AiEngine {
   //
-  Future<EngineResponse> search(Phase phase, {bool byUser = true}) async {
+  Future<EngineResponse> search(Position position, {bool byUser = true}) async {
     //
-    final fen = phase.toFen();
+    final fen = position.toFen();
     var response = await ChessDB.query(fen);
 
     if (response == null) return EngineResponse('network-error');
@@ -52,7 +52,7 @@ class CloudEngine extends AiEngine {
 
         return Future<EngineResponse>.delayed(
           Duration(seconds: 5),
-          () => search(phase, byUser: false),
+          () => search(position, byUser: false),
         );
       }
     }
@@ -60,9 +60,9 @@ class CloudEngine extends AiEngine {
     return EngineResponse('unknown-error');
   }
 
-  static Future<EngineResponse> analysis(Phase phase) async {
+  static Future<EngineResponse> analysis(Position position) async {
     //
-    final fen = phase.toFen();
+    final fen = position.toFen();
     var response = await ChessDB.query(fen);
 
     if (response == null) return EngineResponse('network-error');

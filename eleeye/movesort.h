@@ -49,7 +49,7 @@ const bool ROOT_UNIQUE = true; // 着法顺序函数"MoveSortStruct::ResetRoot()
 
 // 着法序列结构
 struct MoveSortStruct {
-  int nPhase, nMoveIndex, nMoveNum;
+  int nPosition, nMoveIndex, nMoveNum;
   int mvHash, mvKiller1, mvKiller2;
   MoveStruct mvs[MAX_GEN_MOVES];
 
@@ -57,7 +57,7 @@ struct MoveSortStruct {
   void ShellSort(void);  // 着法排序过程
   // 好的吃子着法(包括没有着法，都不更新历史表和杀手着法表)
   bool GoodCap(const PositionStruct &pos, int mv) {
-    return mv == 0 || nPhase == PHASE_GOODCAP || (nPhase < PHASE_GOODCAP && pos.GoodCap(mv));
+    return mv == 0 || nPosition == PHASE_GOODCAP || (nPosition < PHASE_GOODCAP && pos.GoodCap(mv));
   }
 
   // 静态搜索的着法顺序控制
@@ -88,7 +88,7 @@ struct MoveSortStruct {
 
   // 完全搜索的着法顺序控制
   void InitFull(const PositionStruct &pos, int mv, const uint16_t *lpwmvKiller) {
-    nPhase = PHASE_HASH;
+    nPosition = PHASE_HASH;
     mvHash = mv;
     mvKiller1 = lpwmvKiller[0];
     mvKiller2 = lpwmvKiller[1];

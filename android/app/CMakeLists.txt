@@ -7,7 +7,7 @@ add_library( # Sets the name of the library.
         SHARED
 
         # Provides a relative path to your source file(s).
-        src/main/cpp/cchess-engine.cpp
+        src/main/cpp/mill-engine.cpp
         ../../eleeye/command-channel.cpp
         ../../eleeye/command-queue.cpp
         ../../eleeye/book.cpp

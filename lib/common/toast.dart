@@ -79,8 +79,9 @@ class Toast {
                 padding: EdgeInsets.symmetric(horizontal: 40.0),
                 child: AnimatedOpacity(
                   opacity: _showing ? 1.0 : 0.0, // 目标透明度
-                  duration: _showing ? 
-                      Duration(milliseconds: 100) : Duration(milliseconds: 400),
+                  duration: _showing
+                      ? Duration(milliseconds: 100)
+                      : Duration(milliseconds: 400),
                   child: _buildToastWidget(),
                 ),
               )),
@@ -114,8 +115,10 @@ class Toast {
       child: Card(
         color: _bgColor,
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: _pdHorizontal, vertical: _pdVertical),
-          child: Text(_msg, style: TextStyle(fontSize: _textSize, color: _textColor)),
+          padding: EdgeInsets.symmetric(
+              horizontal: _pdHorizontal, vertical: _pdVertical),
+          child: Text(_msg,
+              style: TextStyle(fontSize: _textSize, color: _textColor)),
         ),
       ),
     );

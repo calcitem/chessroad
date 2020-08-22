@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../cchess/cc-base.dart';
+import '../mill/mill-base.dart';
 import '../common/color-consts.dart';
 import '../board/painter-base.dart';
-import '../cchess/phase.dart';
+import '../mill/position.dart';
 import 'board-widget.dart';
 
 class PiecePaintStub {
@@ -13,14 +13,14 @@ class PiecePaintStub {
 
 class PiecesPainter extends PainterBase {
   //
-  final Phase phase;
+  final Position position;
   final int focusIndex, blurIndex;
 
   double pieceSide;
 
   PiecesPainter({
     @required double width,
-    @required this.phase,
+    @required this.position,
     this.focusIndex = Move.InvalidIndex,
     this.blurIndex = Move.InvalidIndex,
   }) : super(width: width) {
@@ -34,7 +34,7 @@ class PiecesPainter extends PainterBase {
     doPaint(
       canvas,
       thePaint,
-      phase: phase,
+      position: position,
       gridWidth: gridWidth,
       squareSide: squareSide,
       pieceSide: pieceSide,
@@ -55,7 +55,7 @@ class PiecesPainter extends PainterBase {
   static doPaint(
     Canvas canvas,
     Paint paint, {
-    Phase phase,
+    Position position,
     double gridWidth,
     double squareSide,
     double pieceSide,
@@ -75,8 +75,8 @@ class PiecesPainter extends PainterBase {
       //
       for (var column = 0; column < 7; column++) {
         //
-        //final piece = phase.pieceAt(row * 7 + column);
-        final piece = phase.pieceAt(row * 7 + column); // 改为9则全空
+        //final piece = position.pieceAt(row * 7 + column);
+        final piece = position.pieceAt(row * 7 + column); // 改为9则全空
 
         if (piece == Piece.Empty) continue;
 

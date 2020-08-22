@@ -1,14 +1,14 @@
 import '../services/audios.dart';
 
-import '../cchess/cc-rules.dart';
-import '../cchess/cc-base.dart';
-import '../cchess/phase.dart';
+import '../mill/mill-rules.dart';
+import '../mill/mill-base.dart';
+import '../mill/position.dart';
 
 class Battle {
   //
   static Battle _instance;
 
-  Phase _phase;
+  Position _phase;
   int _focusIndex, _blurIndex;
 
   static get shared {
@@ -17,12 +17,12 @@ class Battle {
   }
 
   init() {
-    _phase = Phase.defaultPhase();
+    _phase = Position.defaultPosition();
     _focusIndex = _blurIndex = Move.InvalidIndex;
   }
 
   newGame() {
-    Battle.shared.phase.initDefaultPhase();
+    Battle.shared.position.initDefaultPosition();
     _focusIndex = _blurIndex = Move.InvalidIndex;
   }
 
@@ -102,7 +102,7 @@ class Battle {
     final forPerson = (_phase.side == Side.Red);
 
     if (scanLongCatch()) {
-      // born 'repeat' phase by oppo
+      // born 'repeat' position by oppo
       return forPerson ? BattleResult.Win : BattleResult.Lose;
     }
 
@@ -118,7 +118,7 @@ class Battle {
     return false;
   }
 
-  get phase => _phase;
+  get position => _phase;
 
   get focusIndex => _focusIndex;
 

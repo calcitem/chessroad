@@ -1,5 +1,5 @@
 //
-//  CChessEngine.h
+//  MillEngine.h
 //  Runner
 //
 //  Created by 贺照云 on 2020/3/18.
@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CChessEngine : NSObject {
+@interface MillEngine : NSObject {
     NSOperationQueue *operationQueue;
 }
 

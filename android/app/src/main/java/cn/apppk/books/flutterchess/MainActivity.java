@@ -13,14 +13,14 @@ public class MainActivity extends FlutterActivity {
 
     private static final String ENGINE_CHANNEL = "com.calcitem.sanmill/engine";
 
-    private CChessEngine engine;
+    private MillEngine engine;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
 
-        engine = new CChessEngine();
+        engine = new MillEngine();
 
         FlutterEngine fe = getFlutterEngine();
         if (fe == null) return;

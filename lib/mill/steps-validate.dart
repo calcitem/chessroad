@@ -1,6 +1,6 @@
 import '../common/math.ext.dart';
-import 'cc-base.dart';
-import 'cc-rules.dart';
+import 'mill-base.dart';
+import 'mill-rules.dart';
 import 'position.dart';
 
 class StepValidate {

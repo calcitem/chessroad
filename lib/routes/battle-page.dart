@@ -1,5 +1,5 @@
-import '../cchess/cc-base.dart';
-import '../cchess/step-name.dart';
+import '../mill/mill-base.dart';
+import '../mill/step-name.dart';
 import '../common/color-consts.dart';
 import '../common/toast.dart';
 import '../engine/analysis.dart';
@@ -21,7 +21,9 @@ class BattlePage extends StatefulWidget {
   final EngineType engineType;
   final AiEngine engine;
 
-  BattlePage(this.engineType) : engine = (engineType == EngineType.Cloud) ? CloudEngine() : NativeEngine();
+  BattlePage(this.engineType)
+      : engine =
+            (engineType == EngineType.Cloud) ? CloudEngine() : NativeEngine();
 
   @override
   _BattlePageState createState() => _BattlePageState();
@@ -45,21 +47,22 @@ class _BattlePageState extends State<BattlePage> {
 
   onBoardTap(BuildContext context, int index) {
     //
-    final phase = Battle.shared.phase;
+    final position = Battle.shared.position;
 
-    // 仅 Phase 中的 side 指示一方能动棋
-    if (phase.side != Side.Red) return;
+    // 仅 Position 中的 side 指示一方能动棋
+    if (position.side != Side.Red) return;
 
-    final tapedPiece = phase.pieceAt(index);
+    final tapedPiece = position.pieceAt(index);
 
     // 之前已经有棋子被选中了
-    if (Battle.shared.focusIndex != Move.InvalidIndex && Side.of(phase.pieceAt(Battle.shared.focusIndex)) == Side.Red) {
+    if (Battle.shared.focusIndex != Move.InvalidIndex &&
+        Side.of(position.pieceAt(Battle.shared.focusIndex)) == Side.Red) {
       //
       // 当前点击的棋子和之前已经选择的是同一个位置
       if (Battle.shared.focusIndex == index) return;
 
       // 之前已经选择的棋子和现在点击的棋子是同一边的，说明是选择另外一个棋子
-      final focusPiece = phase.pieceAt(Battle.shared.focusIndex);
+      final focusPiece = position.pieceAt(Battle.shared.focusIndex);
 
       if (Side.sameSide(focusPiece, tapedPiece)) {
         //
@@ -97,7 +100,7 @@ class _BattlePageState extends State<BattlePage> {
     //
     changeStatus('对方思考中...');
 
-    final response = await widget.engine.search(Battle.shared.phase);
+    final response = await widget.engine.search(Battle.shared.position);
 
     if (response.type == 'move') {
       //
@@ -152,21 +155,21 @@ class _BattlePageState extends State<BattlePage> {
     );
   }
 
-  analysisPhase() async {
+  analysisPosition() async {
     //
     Toast.toast(context, msg: '正在分析局面...', position: ToastPostion.bottom);
 
     setState(() => _analysising = true);
 
     try {
-      final result = await CloudEngine.analysis(Battle.shared.phase);
+      final result = await CloudEngine.analysis(Battle.shared.position);
 
       if (result.type == 'analysis') {
         //
         List<AnalysisItem> items = result.value;
         items.forEach(
           (item) => item.stepName = StepName.translate(
-            Battle.shared.phase,
+            Battle.shared.position,
             Move.fromEngineStep(item.move),
           ),
         );
@@ -230,7 +233,7 @@ class _BattlePageState extends State<BattlePage> {
 
   void gotWin() {
     //
-    Battle.shared.phase.result = BattleResult.Win;
+    Battle.shared.position.result = BattleResult.Win;
     Audios.playTone('win.mp3');
 
     showDialog(
@@ -242,7 +245,9 @@ class _BattlePageState extends State<BattlePage> {
           content: Text('恭喜您取得了伟大的胜利！'),
           actions: <Widget>[
             FlatButton(child: Text('再来一盘'), onPressed: newGame),
-            FlatButton(child: Text('关闭'), onPressed: () => Navigator.of(context).pop()),
+            FlatButton(
+                child: Text('关闭'),
+                onPressed: () => Navigator.of(context).pop()),
           ],
         );
       },
@@ -256,7 +261,7 @@ class _BattlePageState extends State<BattlePage> {
 
   void gotLose() {
     //
-    Battle.shared.phase.result = BattleResult.Lose;
+    Battle.shared.position.result = BattleResult.Lose;
     Audios.playTone('lose.mp3');
 
     showDialog(
@@ -268,7 +273,9 @@ class _BattlePageState extends State<BattlePage> {
           content: Text('勇士！坚定战斗，虽败犹荣！'),
           actions: <Widget>[
             FlatButton(child: Text('再来一盘'), onPressed: newGame),
-            FlatButton(child: Text('关闭'), onPressed: () => Navigator.of(context).pop()),
+            FlatButton(
+                child: Text('关闭'),
+                onPressed: () => Navigator.of(context).pop()),
           ],
         );
       },
@@ -277,7 +284,7 @@ class _BattlePageState extends State<BattlePage> {
 
   void gotDraw() {
     //
-    Battle.shared.phase.result = BattleResult.Draw;
+    Battle.shared.position.result = BattleResult.Draw;
 
     showDialog(
       context: context,
@@ -288,7 +295,9 @@ class _BattlePageState extends State<BattlePage> {
           content: Text('您用自己的力量捍卫了和平！'),
           actions: <Widget>[
             FlatButton(child: Text('再来一盘'), onPressed: newGame),
-            FlatButton(child: Text('关闭'), onPressed: () => Navigator.of(context).pop()),
+            FlatButton(
+                child: Text('关闭'),
+                onPressed: () => Navigator.of(context).pop()),
           ],
         );
       },
@@ -303,14 +312,17 @@ class _BattlePageState extends State<BattlePage> {
 
     if (height / width < 16.0 / 9.0) {
       width = height * 9 / 16;
-      BattlePage.screenPaddingH = (windowSize.width - width) / 2 - BattlePage.boardMargin;
+      BattlePage.screenPaddingH =
+          (windowSize.width - width) / 2 - BattlePage.boardMargin;
     }
   }
 
   Widget createPageHeader() {
     //
-    final titleStyle = TextStyle(fontSize: 28, color: ColorConsts.DarkTextPrimary);
-    final subTitleStyle = TextStyle(fontSize: 16, color: ColorConsts.DarkTextSecondary);
+    final titleStyle =
+        TextStyle(fontSize: 28, color: ColorConsts.DarkTextPrimary);
+    final subTitleStyle =
+        TextStyle(fontSize: 16, color: ColorConsts.DarkTextSecondary);
 
     return Container(
       margin: EdgeInsets.only(top: SanmillApp.StatusBarHeight),
@@ -319,13 +331,15 @@ class _BattlePageState extends State<BattlePage> {
           Row(
             children: <Widget>[
               IconButton(
-                icon: Icon(Icons.arrow_back, color: ColorConsts.DarkTextPrimary),
+                icon:
+                    Icon(Icons.arrow_back, color: ColorConsts.DarkTextPrimary),
                 onPressed: () => Navigator.of(context).pop(),
               ),
               Expanded(child: SizedBox()),
               Hero(tag: 'logo', child: Image.asset('images/logo-mini.png')),
               SizedBox(width: 10),
-              Text(widget.engineType == EngineType.Cloud ? '挑战云主机' : '人机对战', style: titleStyle),
+              Text(widget.engineType == EngineType.Cloud ? '挑战云主机' : '人机对战',
+                  style: titleStyle),
               Expanded(child: SizedBox()),
               IconButton(
                 icon: Icon(Icons.settings, color: ColorConsts.DarkTextPrimary),
@@ -361,7 +375,8 @@ class _BattlePageState extends State<BattlePage> {
         vertical: BattlePage.boardMargin,
       ),
       child: BoardWidget(
-        width: MediaQuery.of(context).size.width - BattlePage.screenPaddingH * 2,
+        width:
+            MediaQuery.of(context).size.width - BattlePage.screenPaddingH * 2,
         onBoardTap: onBoardTap,
       ),
     );
@@ -392,7 +407,7 @@ class _BattlePageState extends State<BattlePage> {
         Expanded(child: SizedBox()),
         FlatButton(
           child: Text('分析局面', style: buttonStyle),
-          onPressed: _analysising ? null : analysisPhase,
+          onPressed: _analysising ? null : analysisPosition,
         ),
         Expanded(child: SizedBox()),
       ]),
@@ -403,7 +418,7 @@ class _BattlePageState extends State<BattlePage> {
     //
     final size = MediaQuery.of(context).size;
 
-    final manualText = Battle.shared.phase.manualText;
+    final manualText = Battle.shared.position.manualText;
 
     if (size.height / size.width > 16 / 9) {
       return buildManualPanel(manualText);
@@ -441,7 +456,8 @@ class _BattlePageState extends State<BattlePage> {
           builder: (BuildContext context) {
             return AlertDialog(
               title: Text('棋谱', style: TextStyle(color: ColorConsts.Primary)),
-              content: SingleChildScrollView(child: Text(text, style: manualStyle)),
+              content:
+                  SingleChildScrollView(child: Text(text, style: manualStyle)),
               actions: <Widget>[
                 FlatButton(
                   child: Text('好的'),

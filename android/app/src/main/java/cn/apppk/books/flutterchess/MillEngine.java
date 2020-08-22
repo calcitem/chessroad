@@ -1,6 +1,6 @@
 package com.calcitem.sanmill;
 
-public class CChessEngine {
+public class MillEngine {
 
     static {
         System.loadLibrary("engine");

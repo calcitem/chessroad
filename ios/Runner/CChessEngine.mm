@@ -1,15 +1,15 @@
 //
-//  CChessEngine.m
+//  MillEngine.m
 //  Runner
 //
 //  Created by 贺照云 on 2020/3/18.
 //
 
-#import "CChessEngine.h"
+#import "MillEngine.h"
 #import "eleeye.h"
 #import "command-channel.h"
 
-@implementation CChessEngine
+@implementation MillEngine
 
 @synthesize state;
 

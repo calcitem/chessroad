@@ -1,4 +1,4 @@
-import '../cchess/phase.dart';
+import '../mill/position.dart';
 
 enum EngineType { Cloud, Native }
 
@@ -14,5 +14,5 @@ abstract class AiEngine {
 
   Future<void> shutdown() async {}
 
-  Future<EngineResponse> search(Phase phase, {bool byUser = true});
+  Future<EngineResponse> search(Position position, {bool byUser = true});
 }

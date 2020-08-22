@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import '../cchess/cc-base.dart';
-import '../cchess/phase.dart';
+import '../mill/mill-base.dart';
+import '../mill/position.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -94,11 +94,11 @@ class NativeEngine extends AiEngine {
   }
 
   @override
-  Future<EngineResponse> search(Phase phase, {bool byUser = true}) async {
+  Future<EngineResponse> search(Position position, {bool byUser = true}) async {
     //
     if (await isThinking()) await stopSearching();
 
-    send(buildPositionCommand(phase));
+    send(buildPositionCommand(position));
     send('go time 5000');
 
     final response = await waitResponse(['bestmove', 'nobestmove']);
@@ -120,7 +120,8 @@ class NativeEngine extends AiEngine {
     return EngineResponse('timeout');
   }
 
-  Future<String> waitResponse(List<String> prefixes, {sleep = 100, times = 100}) async {
+  Future<String> waitResponse(List<String> prefixes,
+      {sleep = 100, times = 100}) async {
     //
     if (times <= 0) return '';
 
@@ -142,13 +143,13 @@ class NativeEngine extends AiEngine {
     await send('stop');
   }
 
-  String buildPositionCommand(Phase phase) {
+  String buildPositionCommand(Position position) {
     //
-    final startPhase = phase.lastCapturedPhase;
-    final moves = phase.movesSinceLastCaptured();
+    final startPosition = position.lastCapturedPosition;
+    final moves = position.movesSinceLastCaptured();
 
-    if (moves.isEmpty) return 'position fen $startPhase';
+    if (moves.isEmpty) return 'position fen $startPosition';
 
-    return 'position fen $startPhase moves $moves';
+    return 'position fen $startPosition moves $moves';
   }
 }

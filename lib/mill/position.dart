@@ -1,6 +1,6 @@
-import '../cchess/cc-recorder.dart';
+import '../mill/mill-recorder.dart';
 
-import 'cc-base.dart';
+import 'mill-base.dart';
 import 'step-name.dart';
 import 'steps-validate.dart';
 

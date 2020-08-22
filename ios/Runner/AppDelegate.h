@@ -1,9 +1,9 @@
 #import <Flutter/Flutter.h>
 #import <UIKit/UIKit.h>
-#import "CChessEngine.h"
+#import "MillEngine.h"
 
 @interface AppDelegate : FlutterAppDelegate {
-    CChessEngine* engine;
+    MillEngine* engine;
 }
 
 @end

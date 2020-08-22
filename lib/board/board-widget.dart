@@ -29,7 +29,7 @@ class BoardWidget extends StatelessWidget {
         painter: BoardPainter(width: width),
         foregroundPainter: PiecesPainter(
           width: width,
-          phase: Battle.shared.phase,
+          position: Battle.shared.position,
           focusIndex: Battle.shared.focusIndex,
           blurIndex: Battle.shared.blurIndex,
         ),
@@ -37,7 +37,8 @@ class BoardWidget extends StatelessWidget {
           margin: EdgeInsets.symmetric(
             vertical: Padding,
             horizontal: (width - Padding * 2) / 7 / 2 +
-            	Padding - WordsOnBoard.DigitsFontSize / 2,
+                Padding -
+                WordsOnBoard.DigitsFontSize / 2,
           ),
           //child: WordsOnBoard(),
         ),

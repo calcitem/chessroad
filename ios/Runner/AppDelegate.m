@@ -8,7 +8,7 @@
     self = [super init];
     
     if (self) {
-        engine = [[CChessEngine alloc] init];
+        engine = [[MillEngine alloc] init];
     }
     
     return self;
@@ -26,7 +26,7 @@
                                            methodChannelWithName:@"com.calcitem.sanmill/engine"
                                            binaryMessenger:controller.binaryMessenger];
     
-    __weak CChessEngine* weakEngine = engine;
+    __weak MillEngine* weakEngine = engine;
     
     [engineChannel setMethodCallHandler:^(FlutterMethodCall* call, FlutterResult result) {
         

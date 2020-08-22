@@ -82,7 +82,7 @@ void MoveSortStruct::ShellSort(void) {
  */
 int MoveSortStruct::InitEvade(PositionStruct &pos, int mv, const uint16_t *lpwmvKiller) {
   int i, nLegal;
-  nPhase = PHASE_REST;
+  nPosition = PHASE_REST;
   nMoveIndex = 0;
   nMoveNum = pos.GenAllMoves(mvs);
   SetHistory();
@@ -112,12 +112,12 @@ int MoveSortStruct::InitEvade(PositionStruct &pos, int mv, const uint16_t *lpwmv
 
 // 给出下一个即将搜索的着法
 int MoveSortStruct::NextFull(const PositionStruct &pos) {
-  switch (nPhase) {
-  // "nPhase"表示着法启发的若干阶段，依次为：
+  switch (nPosition) {
+  // "nPosition"表示着法启发的若干阶段，依次为：
 
   // 0. 置换表着法启发，完成后立即进入下一阶段；
   case PHASE_HASH:
-    nPhase = PHASE_GEN_CAP;
+    nPosition = PHASE_GEN_CAP;
     if (mvHash != 0) {
       __ASSERT(pos.LegalMove(mvHash));
       return mvHash;
@@ -126,7 +126,7 @@ int MoveSortStruct::NextFull(const PositionStruct &pos) {
 
   // 1. 生成所有吃子着法，完成后立即进入下一阶段；
   case PHASE_GEN_CAP:
-    nPhase = PHASE_GOODCAP;
+    nPosition = PHASE_GOODCAP;
     nMoveIndex = 0;
     nMoveNum = pos.GenCapMoves(mvs);
     ShellSort();
@@ -142,7 +142,7 @@ int MoveSortStruct::NextFull(const PositionStruct &pos) {
 
   // 3. 杀手着法启发(第一个杀手着法)，完成后立即进入下一阶段；
   case PHASE_KILLER1:
-    nPhase = PHASE_KILLER2;
+    nPosition = PHASE_KILLER2;
     if (mvKiller1 != 0 && pos.LegalMove(mvKiller1)) {
       // 注意：杀手着法必须检验着法合理性，下同
       return mvKiller1;
@@ -150,14 +150,14 @@ int MoveSortStruct::NextFull(const PositionStruct &pos) {
 
   // 4. 杀手着法启发(第二个杀手着法)，完成后立即进入下一阶段；
   case PHASE_KILLER2:
-    nPhase = PHASE_GEN_NONCAP;
+    nPosition = PHASE_GEN_NONCAP;
     if (mvKiller2 != 0 && pos.LegalMove(mvKiller2)) {
       return mvKiller2;
     }
 
   // 5. 生成所有不吃子着法，完成后立即进入下一阶段；
   case PHASE_GEN_NONCAP:
-    nPhase = PHASE_REST;
+    nPosition = PHASE_REST;
     nMoveNum += pos.GenNonCapMoves(mvs + nMoveNum);
     SetHistory();
     ShellSort();
