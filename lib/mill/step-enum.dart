@@ -3,7 +3,7 @@ import 'mill-base.dart';
 import 'position.dart';
 
 class StepsEnumerator {
-  //
+  // TODO
   static List<Move> enumSteps(Position position) {
     //
     final steps = <Move>[];
@@ -18,24 +18,6 @@ class StepsEnumerator {
         if (Side.of(piece) != position.side) continue;
 
         var pieceSteps;
-
-        if (piece == Piece.WhiteKing || piece == Piece.BlackKing) {
-          pieceSteps = enumKingSteps(position, row, col, from);
-        } else if (piece == Piece.WhiteAdvisor || piece == Piece.BlackAdvisor) {
-          pieceSteps = enumAdvisorSteps(position, row, col, from);
-        } else if (piece == Piece.WhiteBishop || piece == Piece.BlackBishop) {
-          pieceSteps = enumBishopSteps(position, row, col, from);
-        } else if (piece == Piece.WhiteKnight || piece == Piece.BlackKnight) {
-          pieceSteps = enumKnightSteps(position, row, col, from);
-        } else if (piece == Piece.WhiteRook || piece == Piece.BlackRook) {
-          pieceSteps = enumRookSteps(position, row, col, from);
-        } else if (piece == Piece.WhiteCanon || piece == Piece.BlackCanon) {
-          pieceSteps = enumCanonSteps(position, row, col, from);
-        } else if (piece == Piece.WhitePawn || piece == Piece.BlackPawn) {
-          pieceSteps = enumPawnSteps(position, row, col, from);
-        } else {
-          continue;
-        }
 
         steps.addAll(pieceSteps);
       }

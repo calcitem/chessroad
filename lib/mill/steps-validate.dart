@@ -6,34 +6,12 @@ import 'position.dart';
 class StepValidate {
   //
   static bool validate(Position position, Move move) {
-    //
+    // TODO
     if (Side.of(position.pieceAt(move.to)) == position.side) return false;
 
-    final piece = position.pieceAt(move.from);
+    //var valid = false;
 
-    var valid = false;
-
-    if (piece == Piece.WhiteKing || piece == Piece.BlackKing) {
-      valid = validateKingStep(position, move);
-    } else if (piece == Piece.WhiteAdvisor || piece == Piece.BlackAdvisor) {
-      valid = validateAdvisorStep(position, move);
-    } else if (piece == Piece.WhiteBishop || piece == Piece.BlackBishop) {
-      valid = validateBishopStep(position, move);
-    } else if (piece == Piece.WhiteKnight || piece == Piece.BlackKnight) {
-      valid = validateKnightStep(position, move);
-    } else if (piece == Piece.WhiteRook || piece == Piece.BlackRook) {
-      valid = validateRookStep(position, move);
-    } else if (piece == Piece.WhiteCanon || piece == Piece.BlackCanon) {
-      valid = validateCanonStep(position, move);
-    } else if (piece == Piece.WhitePawn || piece == Piece.BlackPawn) {
-      valid = validatePawnStep(position, move);
-    }
-
-    if (!valid) return false;
-
-    if (ChessRules.willBeChecked(position, move)) return false;
-
-    if (ChessRules.willKingsMeeting(position, move)) return false;
+    //if (!valid) return false;
 
     return true;
   }

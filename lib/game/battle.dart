@@ -8,7 +8,7 @@ class Battle {
   //
   static Battle _instance;
 
-  Position _phase;
+  Position _position;
   int _focusIndex, _blurIndex;
 
   static get shared {
@@ -17,7 +17,7 @@ class Battle {
   }
 
   init() {
-    _phase = Position.defaultPosition();
+    _position = Position.defaultPosition();
     _focusIndex = _blurIndex = Move.InvalidIndex;
   }
 
@@ -34,7 +34,7 @@ class Battle {
 
   bool move(int from, int to) {
     //
-    final captured = _phase.move(from, to);
+    final captured = _position.move(from, to);
 
     if (captured == null) {
       Audios.playTone('invalid.mp3');
@@ -44,19 +44,13 @@ class Battle {
     _blurIndex = from;
     _focusIndex = to;
 
-    if (ChessRules.checked(_phase)) {
-      Audios.playTone('check.mp3');
-    } else {
-      Audios.playTone(captured != Piece.Empty ? 'capture.mp3' : 'move.mp3');
-    }
-
     return true;
   }
 
   bool regret({steps = 2}) {
     //
     // 轮到自己走棋的时候，才能悔棋
-    if (_phase.side != Side.White) {
+    if (_position.side != Side.White) {
       Audios.playTone('invalid.mp3');
       return false;
     }
@@ -67,9 +61,9 @@ class Battle {
 
     for (var i = 0; i < steps; i++) {
       //
-      if (!_phase.regret()) break;
+      if (!_position.regret()) break;
 
-      final lastMove = _phase.lastMove;
+      final lastMove = _position.lastMove;
 
       if (lastMove != null) {
         //
@@ -99,18 +93,16 @@ class Battle {
 
   BattleResult scanBattleResult() {
     //
-    final forPerson = (_phase.side == Side.White);
+    final forPerson = (_position.side == Side.White);
 
     if (scanLongCatch()) {
       // born 'repeat' position by oppo
       return forPerson ? BattleResult.Win : BattleResult.Lose;
     }
 
-    if (ChessRules.beKilled(_phase)) {
-      return forPerson ? BattleResult.Lose : BattleResult.Win;
-    }
-
-    return (_phase.halfMove > 120) ? BattleResult.Draw : BattleResult.Pending;
+    return (_position.halfMove > 120)
+        ? BattleResult.Draw
+        : BattleResult.Pending;
   }
 
   scanLongCatch() {
@@ -118,7 +110,7 @@ class Battle {
     return false;
   }
 
-  get position => _phase;
+  get position => _position;
 
   get focusIndex => _focusIndex;
 

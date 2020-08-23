@@ -4,12 +4,15 @@ enum BattleResult { Pending, Win, Lose, Draw }
 class Side {
   //
   static const Unknown = '-';
-  static const White = 'w';
   static const Black = 'b';
+  static const White = 'w';
+
+  static const Ban = 'x';
 
   static String of(String piece) {
-    if ('RNBAKCP'.contains(piece)) return White;
-    if ('rnbakcp'.contains(piece)) return Black;
+    if (Black.contains(piece)) return Black;
+    if (White.contains(piece)) return White;
+    if (Ban.contains(piece)) return Ban;
     return Unknown;
   }
 
@@ -28,49 +31,25 @@ class Piece {
   //
   static const Empty = ' ';
   //
-  static const WhiteRook = 'R';
-  static const WhiteKnight = 'N';
-  static const WhiteBishop = 'B';
-  static const WhiteAdvisor = 'A';
-  static const WhiteKing = 'K';
-  static const WhiteCanon = 'C';
-  static const WhitePawn = 'P';
-  //
-  static const BlackRook = 'r';
-  static const BlackKnight = 'n';
-  static const BlackBishop = 'b';
-  static const BlackAdvisor = 'a';
-  static const BlackKing = 'k';
-  static const BlackCanon = 'c';
-  static const BlackPawn = 'p';
+  static const BlackStone = 'b';
+  static const WhiteStone = 'w';
+  static const Ban = 'x';
 
   static const Names = {
     Empty: '',
     //
-    WhiteRook: '车',
-    WhiteKnight: '马',
-    WhiteBishop: '相',
-    WhiteAdvisor: '仕',
-    WhiteKing: '帅',
-    WhiteCanon: '炮',
-    WhitePawn: '兵',
-    //
-    BlackRook: '车',
-    BlackKnight: '马',
-    BlackBishop: '象',
-    BlackAdvisor: '士',
-    BlackKing: '将',
-    BlackCanon: '炮',
-    BlackPawn: '卒',
+    BlackStone: 'b',
+    WhiteStone: 'w',
+    Ban: 'x',
   };
 
-  static bool isWhite(String c) => 'RNBAKCP'.contains(c);
+  static bool isBlack(String c) => 'b'.contains(c);
 
-  static bool isBlack(String c) => 'rnbakcp'.contains(c);
+  static bool isWhite(String c) => 'w'.contains(c);
 }
 
 class Move {
-  //
+  // TODO
   static const InvalidIndex = -1;
 
   // List<String>(90) 中的索引
@@ -84,11 +63,12 @@ class Move {
   // 'step' is the ucci engine's move-string
   String step;
   String stepName;
-  
+
   // 这一步走完后的 FEN 记数，用于悔棋时恢复 FEN 步数 Counter
   String counterMarks;
 
-  Move(this.from, this.to, {this.captured = Piece.Empty, this.counterMarks = '0 0'}) {
+  Move(this.from, this.to,
+      {this.captured = Piece.Empty, this.counterMarks = '0 0'}) {
     //
     fx = from % 9;
     fy = from ~/ 9;
@@ -104,11 +84,10 @@ class Move {
     step += String.fromCharCode('a'.codeUnitAt(0) + tx) + (9 - ty).toString();
   }
 
-  /// 引擎返回的招法用是 4 个字符表示的，例如 b0c2
-  /// 它的着法基于左下角坐标系
-  /// 用 a ~ i 表示从左到右的 9 列
-  /// 用 0 ~ 9 表示从下到上 10 行
-  /// 因此 b0c2 表示从第 2 列第 1 行移动到第 3 列第 3 行
+  /// 引擎返回的招法用是如此表示的，例如:
+  /// 落子：(1,2)
+  /// 吃子：-(1,2)
+  /// 走子：(3,1)->(2,1)
 
   Move.fromEngineStep(String step) {
     //
@@ -131,7 +110,7 @@ class Move {
 
   static bool validateEngineStep(String step) {
     //
-    if (step == null || step.length < 4) return false;
+    if (step == null || step.length > "(3,1)->(2,1)".length) return false;
 
     final fx = step[0].codeUnitAt(0) - 'a'.codeUnitAt(0);
     final fy = 9 - (step[1].codeUnitAt(0) - '0'.codeUnitAt(0));
