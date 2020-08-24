@@ -9,8 +9,8 @@ class Position {
   BattleResult result = BattleResult.Pending;
 
   String _side;
-  List<String> _pieces; // 10 行，9 列
-  CCRecorder _recorder;
+  List<String> _board; // 8  *  3
+  MillRecorder _recorder;
 
   Position.defaultPosition() {
     initDefaultPosition();
@@ -18,21 +18,21 @@ class Position {
 
   void initDefaultPosition() {
     //
-    _side = Side.White;
-    _pieces = List<String>(90);
+    _side = Side.Black;
+    _board = List<String>(40); // SQUARE_NB
 
-    for (var i = 0; i < 90; i++) {
-      _pieces[i] ??= Piece.Empty;
+    for (var i = 0; i < 40; i++) {
+      _board[i] ??= Piece.Empty;
     }
 
-    _recorder = CCRecorder(lastCapturedPosition: toFen());
+    _recorder = MillRecorder(lastCapturedPosition: toFen());
   }
 
   Position.clone(Position other) {
     //
-    _pieces = List<String>();
+    _board = List<String>();
 
-    other._pieces.forEach((piece) => _pieces.add(piece));
+    other._board.forEach((piece) => _board.add(piece));
 
     _side = other._side;
 
@@ -43,15 +43,15 @@ class Position {
     //
     if (!validateMove(from, to)) return null;
 
-    final captured = _pieces[to];
+    final captured = _board[to];
 
     final move = Move(from, to, captured: captured);
     StepName.translate(this, move);
     _recorder.stepIn(move, this);
 
     // 修改棋盘
-    _pieces[to] = _pieces[from];
-    _pieces[from] = Piece.Empty;
+    _board[to] = _board[from];
+    _board[from] = Piece.Empty;
 
     // 交换走棋方
     _side = Side.oppo(_side);
@@ -62,7 +62,7 @@ class Position {
   // 验证移动棋子的着法是否合法
   bool validateMove(int from, int to) {
     // 移动的棋子的选手，应该是当前方
-    if (Side.of(_pieces[from]) != _side) return false;
+    if (Side.of(_board[from]) != _side) return false;
     return (StepValidate.validate(this, Move(from, to)));
   }
 
@@ -71,8 +71,8 @@ class Position {
   void moveTest(Move move, {turnSide = false}) {
     //
     // 修改棋盘
-    _pieces[move.to] = _pieces[move.from];
-    _pieces[move.from] = Piece.Empty;
+    _board[move.to] = _board[move.from];
+    _board[move.from] = Piece.Empty;
 
     // 交换走棋方
     if (turnSide) _side = Side.oppo(_side);
@@ -83,12 +83,12 @@ class Position {
     final lastMove = _recorder.removeLast();
     if (lastMove == null) return false;
 
-    _pieces[lastMove.from] = _pieces[lastMove.to];
-    _pieces[lastMove.to] = lastMove.captured;
+    _board[lastMove.from] = _board[lastMove.to];
+    _board[lastMove.to] = lastMove.captured;
 
     _side = Side.oppo(_side);
 
-    final counterMarks = CCRecorder.fromCounterMarks(lastMove.counterMarks);
+    final counterMarks = MillRecorder.fromCounterMarks(lastMove.counterMarks);
     _recorder.halfMove = counterMarks.halfMove;
     _recorder.fullMove = counterMarks.fullMove;
 
@@ -100,8 +100,8 @@ class Position {
       final moves = _recorder.reverseMovesToPrevCapture();
       moves.forEach((move) {
         //
-        tempPosition._pieces[move.from] = tempPosition._pieces[move.to];
-        tempPosition._pieces[move.to] = move.captured;
+        tempPosition._board[move.from] = tempPosition._board[move.to];
+        tempPosition._board[move.to] = move.captured;
 
         tempPosition._side = Side.oppo(tempPosition._side);
       });
@@ -115,16 +115,16 @@ class Position {
   }
 
   String toFen() {
-    //
+    // TODO
     var fen = '';
 
-    for (var row = 0; row < 10; row++) {
+    for (var file = 1; file <= 3; file++) {
       //
       var emptyCounter = 0;
 
-      for (var column = 0; column < 9; column++) {
+      for (var rank = 1; rank <= 8; rank++) {
         //
-        final piece = pieceAt(row * 9 + column);
+        final piece = pieceAt((file - 1) * 8 + rank + 8);
 
         if (piece == Piece.Empty) {
           //
@@ -143,13 +143,10 @@ class Position {
 
       if (emptyCounter > 0) fen += emptyCounter.toString();
 
-      if (row < 9) fen += '/';
+      if (file < 9) fen += '/';
     }
 
     fen += ' $side';
-
-    // 王车易位和吃过路兵标志
-    fen += ' - - ';
 
     // step counter
     fen += '${_recorder?.halfMove ?? 0} ${_recorder?.fullMove ?? 0}';
@@ -179,7 +176,7 @@ class Position {
 
   trunSide() => _side = Side.oppo(_side);
 
-  String pieceAt(int index) => _pieces[index];
+  String pieceAt(int index) => _board[index];
 
   get halfMove => _recorder.halfMove;
 

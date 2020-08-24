@@ -1,15 +1,16 @@
 import 'mill-base.dart';
 import 'position.dart';
 
-class CCRecorder {
+class MillRecorder {
   //
   // 无吃子步数、总回合数
   int halfMove, fullMove;
   String lastCapturedPosition;
   final _history = <Move>[];
 
-  CCRecorder({this.halfMove = 0, this.fullMove = 0, this.lastCapturedPosition});
-  CCRecorder.fromCounterMarks(String marks) {
+  MillRecorder(
+      {this.halfMove = 0, this.fullMove = 0, this.lastCapturedPosition});
+  MillRecorder.fromCounterMarks(String marks) {
     //
     var segments = marks.split(' ');
     if (segments.length != 2) {
