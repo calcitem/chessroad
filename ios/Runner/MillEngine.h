@@ -2,8 +2,6 @@
 //  MillEngine.h
 //  Runner
 //
-//  Created by 贺照云 on 2020/3/18.
-//
 
 #import <Foundation/Foundation.h>
 #import <Flutter/Flutter.h>

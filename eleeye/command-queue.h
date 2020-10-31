@@ -2,8 +2,6 @@
 //  command-queue.h
 //  Runner
 //
-//  Created by 贺照云 on 2020/3/18.
-//
 
 #ifndef command_queue_h
 #define command_queue_h

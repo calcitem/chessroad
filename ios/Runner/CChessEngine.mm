@@ -2,8 +2,6 @@
 //  MillEngine.m
 //  Runner
 //
-//  Created by 贺照云 on 2020/3/18.
-//
 
 #import "MillEngine.h"
 #import "eleeye.h"

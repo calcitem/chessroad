@@ -2,8 +2,6 @@
 //  command-channel.cpp
 //  Runner
 //
-//  Created by 贺照云 on 2020/3/18.
-//
 
 #include <stdlib.h>
 #include "command-queue.h"

@@ -2,8 +2,6 @@
 //  command-channel.h
 //  Runner
 //
-//  Created by 贺照云 on 2020/3/18.
-//
 
 #ifndef command_channel_h
 #define command_channel_h

@@ -2,8 +2,6 @@
 //  command-queue.cpp
 //  Runner
 //
-//  Created by 贺照云 on 2020/3/18.
-//
 
 #include <string.h>
 #include "command-queue.h"
