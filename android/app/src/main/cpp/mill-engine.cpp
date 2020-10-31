@@ -9,7 +9,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <string.h>
-#include "../../../../../command/eleeye.h"
+#include "../../../../../command/engine-main.h"
 #include "../../../../../command/engine-state.h"
 #include "../../../../../command/command-channel.h"
 

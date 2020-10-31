@@ -4,7 +4,7 @@
 //
 
 #import "MillEngine.h"
-#import "eleeye.h"
+#import "engine-main.h"
 #import "command-channel.h"
 
 @implementation MillEngine

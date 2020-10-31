@@ -8,20 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		148EBC34242AFF6500D3129B /* MillEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = 148EBC33242AFF6500D3129B /* MillEngine.mm */; };
-		148EBC56242AFF8100D3129B /* ucci.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 148EBC36242AFF8000D3129B /* ucci.cpp */; };
-		148EBC57242AFF8100D3129B /* search.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 148EBC39242AFF8000D3129B /* search.cpp */; };
-		148EBC58242AFF8100D3129B /* hash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 148EBC3C242AFF8000D3129B /* hash.cpp */; };
-		148EBC59242AFF8100D3129B /* eleeye.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 148EBC40242AFF8000D3129B /* eleeye.cpp */; };
-		148EBC5A242AFF8100D3129B /* position.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 148EBC41242AFF8000D3129B /* position.cpp */; };
+		148EBC59242AFF8100D3129B /* engine-main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 148EBC40242AFF8000D3129B /* engine-main.cpp */; };
 		148EBC5B242AFF8100D3129B /* command-queue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 148EBC42242AFF8000D3129B /* command-queue.cpp */; };
-		148EBC5C242AFF8100D3129B /* genmoves.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 148EBC47242AFF8000D3129B /* genmoves.cpp */; };
-		148EBC5D242AFF8100D3129B /* pregen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 148EBC49242AFF8000D3129B /* pregen.cpp */; };
-		148EBC5E242AFF8100D3129B /* movesort.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 148EBC4C242AFF8000D3129B /* movesort.cpp */; };
-		148EBC5F242AFF8100D3129B /* evaluate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 148EBC4E242AFF8000D3129B /* evaluate.cpp */; };
-		148EBC60242AFF8100D3129B /* preeval.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 148EBC50242AFF8100D3129B /* preeval.cpp */; };
-		148EBC61242AFF8100D3129B /* pipe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 148EBC51242AFF8100D3129B /* pipe.cpp */; };
 		148EBC62242AFF8100D3129B /* command-channel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 148EBC52242AFF8100D3129B /* command-channel.cpp */; };
-		148EBC63242AFF8100D3129B /* book.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 148EBC55242AFF8100D3129B /* book.cpp */; };
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		1D96FDABF91947BDA731340A /* libPods-Runner.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 589325AEFEDFAA2205D6DD02 /* libPods-Runner.a */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
@@ -55,38 +44,15 @@
 		0F9AFC33B643B652A2BDA62F /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
 		148EBC32242AFF6500D3129B /* MillEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MillEngine.h; sourceTree = "<group>"; };
 		148EBC33242AFF6500D3129B /* MillEngine.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MillEngine.mm; sourceTree = "<group>"; };
-		148EBC36242AFF8000D3129B /* ucci.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ucci.cpp; path = ../../command/ucci.cpp; sourceTree = "<group>"; };
 		148EBC37242AFF8000D3129B /* base2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = base2.h; path = ../../command/base2.h; sourceTree = "<group>"; };
-		148EBC38242AFF8000D3129B /* hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hash.h; path = ../../command/hash.h; sourceTree = "<group>"; };
-		148EBC39242AFF8000D3129B /* search.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = search.cpp; path = ../../command/search.cpp; sourceTree = "<group>"; };
 		148EBC3A242AFF8000D3129B /* command-channel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "command-channel.h"; path = "../../command/command-channel.h"; sourceTree = "<group>"; };
-		148EBC3B242AFF8000D3129B /* book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = book.h; path = ../../command/book.h; sourceTree = "<group>"; };
-		148EBC3C242AFF8000D3129B /* hash.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hash.cpp; path = ../../command/hash.cpp; sourceTree = "<group>"; };
-		148EBC3D242AFF8000D3129B /* x86asm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = x86asm.h; path = ../../command/x86asm.h; sourceTree = "<group>"; };
-		148EBC3E242AFF8000D3129B /* position.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = position.h; path = ../../command/position.h; sourceTree = "<group>"; };
 		148EBC3F242AFF8000D3129B /* command-queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "command-queue.h"; path = "../../command/command-queue.h"; sourceTree = "<group>"; };
-		148EBC40242AFF8000D3129B /* eleeye.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = eleeye.cpp; path = ../../command/eleeye.cpp; sourceTree = "<group>"; };
-		148EBC41242AFF8000D3129B /* position.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = position.cpp; path = ../../command/position.cpp; sourceTree = "<group>"; };
+		148EBC40242AFF8000D3129B /* engine-main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = engine-main.cpp; path = ../../command/engine-main.cpp; sourceTree = "<group>"; };
 		148EBC42242AFF8000D3129B /* command-queue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "command-queue.cpp"; path = "../../command/command-queue.cpp"; sourceTree = "<group>"; };
 		148EBC43242AFF8000D3129B /* base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = base.h; path = ../../command/base.h; sourceTree = "<group>"; };
 		148EBC44242AFF8000D3129B /* engine-state.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "engine-state.h"; path = "../../command/engine-state.h"; sourceTree = "<group>"; };
-		148EBC45242AFF8000D3129B /* preeval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = preeval.h; path = ../../command/preeval.h; sourceTree = "<group>"; };
-		148EBC46242AFF8000D3129B /* parse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = parse.h; path = ../../command/parse.h; sourceTree = "<group>"; };
-		148EBC47242AFF8000D3129B /* genmoves.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = genmoves.cpp; path = ../../command/genmoves.cpp; sourceTree = "<group>"; };
-		148EBC48242AFF8000D3129B /* pipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pipe.h; path = ../../command/pipe.h; sourceTree = "<group>"; };
-		148EBC49242AFF8000D3129B /* pregen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = pregen.cpp; path = ../../command/pregen.cpp; sourceTree = "<group>"; };
-		148EBC4A242AFF8000D3129B /* pregen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pregen.h; path = ../../command/pregen.h; sourceTree = "<group>"; };
-		148EBC4B242AFF8000D3129B /* search.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = search.h; path = ../../command/search.h; sourceTree = "<group>"; };
-		148EBC4C242AFF8000D3129B /* movesort.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = movesort.cpp; path = ../../command/movesort.cpp; sourceTree = "<group>"; };
-		148EBC4D242AFF8000D3129B /* movesort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = movesort.h; path = ../../command/movesort.h; sourceTree = "<group>"; };
-		148EBC4E242AFF8000D3129B /* evaluate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = evaluate.cpp; path = ../../command/evaluate.cpp; sourceTree = "<group>"; };
-		148EBC4F242AFF8100D3129B /* ucci.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ucci.h; path = ../../command/ucci.h; sourceTree = "<group>"; };
-		148EBC50242AFF8100D3129B /* preeval.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = preeval.cpp; path = ../../command/preeval.cpp; sourceTree = "<group>"; };
-		148EBC51242AFF8100D3129B /* pipe.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = pipe.cpp; path = ../../command/pipe.cpp; sourceTree = "<group>"; };
 		148EBC52242AFF8100D3129B /* command-channel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "command-channel.cpp"; path = "../../command/command-channel.cpp"; sourceTree = "<group>"; };
-		148EBC53242AFF8100D3129B /* eleeye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eleeye.h; path = ../../command/eleeye.h; sourceTree = "<group>"; };
-		148EBC54242AFF8100D3129B /* rc4prng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rc4prng.h; path = ../../command/rc4prng.h; sourceTree = "<group>"; };
-		148EBC55242AFF8100D3129B /* book.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = book.cpp; path = ../../command/book.cpp; sourceTree = "<group>"; };
+		148EBC53242AFF8100D3129B /* engine-main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = engine-main.h; path = ../../command/engine-main.h; sourceTree = "<group>"; };
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
@@ -127,36 +93,13 @@
 			children = (
 				148EBC43242AFF8000D3129B /* base.h */,
 				148EBC37242AFF8000D3129B /* base2.h */,
-				148EBC55242AFF8100D3129B /* book.cpp */,
-				148EBC3B242AFF8000D3129B /* book.h */,
 				148EBC52242AFF8100D3129B /* command-channel.cpp */,
 				148EBC3A242AFF8000D3129B /* command-channel.h */,
 				148EBC42242AFF8000D3129B /* command-queue.cpp */,
 				148EBC3F242AFF8000D3129B /* command-queue.h */,
-				148EBC40242AFF8000D3129B /* eleeye.cpp */,
-				148EBC53242AFF8100D3129B /* eleeye.h */,
+				148EBC40242AFF8000D3129B /* engine-main.cpp */,
+				148EBC53242AFF8100D3129B /* engine-main.h */,
 				148EBC44242AFF8000D3129B /* engine-state.h */,
-				148EBC4E242AFF8000D3129B /* evaluate.cpp */,
-				148EBC47242AFF8000D3129B /* genmoves.cpp */,
-				148EBC3C242AFF8000D3129B /* hash.cpp */,
-				148EBC38242AFF8000D3129B /* hash.h */,
-				148EBC4C242AFF8000D3129B /* movesort.cpp */,
-				148EBC4D242AFF8000D3129B /* movesort.h */,
-				148EBC46242AFF8000D3129B /* parse.h */,
-				148EBC51242AFF8100D3129B /* pipe.cpp */,
-				148EBC48242AFF8000D3129B /* pipe.h */,
-				148EBC41242AFF8000D3129B /* position.cpp */,
-				148EBC3E242AFF8000D3129B /* position.h */,
-				148EBC50242AFF8100D3129B /* preeval.cpp */,
-				148EBC45242AFF8000D3129B /* preeval.h */,
-				148EBC49242AFF8000D3129B /* pregen.cpp */,
-				148EBC4A242AFF8000D3129B /* pregen.h */,
-				148EBC54242AFF8100D3129B /* rc4prng.h */,
-				148EBC39242AFF8000D3129B /* search.cpp */,
-				148EBC4B242AFF8000D3129B /* search.h */,
-				148EBC36242AFF8000D3129B /* ucci.cpp */,
-				148EBC4F242AFF8100D3129B /* ucci.h */,
-				148EBC3D242AFF8000D3129B /* x86asm.h */,
 			);
 			name = engine;
 			sourceTree = "<group>";
@@ -386,23 +329,12 @@
 			isa = PBXSourcesBuildPosition;
 			buildActionMask = 2147483647;
 			files = (
-				148EBC5D242AFF8100D3129B /* pregen.cpp in Sources */,
-				148EBC5E242AFF8100D3129B /* movesort.cpp in Sources */,
-				148EBC63242AFF8100D3129B /* book.cpp in Sources */,
 				978B8F6F1D3862AE00F588F7 /* AppDelegate.m in Sources */,
 				148EBC5B242AFF8100D3129B /* command-queue.cpp in Sources */,
-				148EBC57242AFF8100D3129B /* search.cpp in Sources */,
 				97C146F31CF9000F007C117D /* main.m in Sources */,
 				148EBC34242AFF6500D3129B /* MillEngine.mm in Sources */,
-				148EBC61242AFF8100D3129B /* pipe.cpp in Sources */,
-				148EBC60242AFF8100D3129B /* preeval.cpp in Sources */,
-				148EBC59242AFF8100D3129B /* eleeye.cpp in Sources */,
-				148EBC5F242AFF8100D3129B /* evaluate.cpp in Sources */,
-				148EBC5A242AFF8100D3129B /* position.cpp in Sources */,
-				148EBC58242AFF8100D3129B /* hash.cpp in Sources */,
-				148EBC5C242AFF8100D3129B /* genmoves.cpp in Sources */,
+				148EBC59242AFF8100D3129B /* engine-main.cpp in Sources */,
 				148EBC62242AFF8100D3129B /* command-channel.cpp in Sources */,
-				148EBC56242AFF8100D3129B /* ucci.cpp in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,7 +10,7 @@ add_library( # Sets the name of the library.
         src/main/cpp/mill-engine.cpp
         ../../command/command-channel.cpp
         ../../command/command-queue.cpp
-        ../../command/eleeye.cpp)
+        ../../command/engine-main.cpp)
 
 
 find_library( # Sets the name of the path variable.
