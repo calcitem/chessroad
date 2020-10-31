@@ -10,8 +10,6 @@
 #ifndef BASE2_H
 #define BASE2_H
 
-const int PATH_MAX_CHAR = 1024;
-
 #ifdef _WIN32
 
 inline void Idle(void) {
