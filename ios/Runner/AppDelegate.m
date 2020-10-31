@@ -20,7 +20,7 @@
     
     FlutterViewController* controller = (FlutterViewController*) self.window.rootViewController;
     
-    /// Chinese Chess Engine
+    /// Engine
     
     FlutterMethodChannel* engineChannel = [FlutterMethodChannel
                                            methodChannelWithName:@"com.calcitem.sanmill/engine"
