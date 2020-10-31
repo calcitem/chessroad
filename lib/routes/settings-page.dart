@@ -87,7 +87,7 @@ class _SettingsPageState extends State<SettingsPage> {
     });
 
     if (Config.bgmEnabled) {
-      Audios.loopBgm('bg_music.mp3');
+      //Audios.loopBgm('bg_music.mp3');
     } else {
       Audios.stopBgm();
     }

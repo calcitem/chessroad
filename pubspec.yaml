@@ -28,17 +28,17 @@ flutter:
     - images/logo-mini.png
     - images/mei.png
     - images/zhu.png
-    
-    - assets/audios/bg_music.mp3
-    - assets/audios/capture.mp3
-    - assets/audios/check.mp3
-    - assets/audios/click.mp3
-    - assets/audios/regret.mp3
-    - assets/audios/draw.mp3
-    - assets/audios/tips.mp3
-    - assets/audios/invalid.mp3
-    - assets/audios/lose.mp3
-    - assets/audios/move.mp3
-    - assets/audios/win.mp3
+
+    #- assets/audios/bg_music.mp3
+    #- assets/audios/capture.mp3
+    #- assets/audios/check.mp3
+    #- assets/audios/click.mp3
+    #- assets/audios/regret.mp3
+    #- assets/audios/draw.mp3
+    #- assets/audios/tips.mp3
+    #- assets/audios/invalid.mp3
+    #- assets/audios/lose.mp3
+    #- assets/audios/move.mp3
+    #- assets/audios/win.mp3
 
     - assets/book.dat

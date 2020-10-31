@@ -234,7 +234,7 @@ class _BattlePageState extends State<BattlePage> {
   void gotWin() {
     //
     Battle.shared.position.result = BattleResult.Win;
-    Audios.playTone('win.mp3');
+    //Audios.playTone('win.mp3');
 
     showDialog(
       context: context,
@@ -262,7 +262,7 @@ class _BattlePageState extends State<BattlePage> {
   void gotLose() {
     //
     Battle.shared.position.result = BattleResult.Lose;
-    Audios.playTone('lose.mp3');
+    //Audios.playTone('lose.mp3');
 
     showDialog(
       context: context,

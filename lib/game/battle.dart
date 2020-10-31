@@ -29,7 +29,7 @@ class Battle {
   select(int pos) {
     _focusIndex = pos;
     _blurIndex = Move.InvalidIndex;
-    Audios.playTone('click.mp3');
+    //Audios.playTone('click.mp3');
   }
 
   bool move(int from, int to) {
@@ -37,7 +37,7 @@ class Battle {
     final captured = _position.move(from, to);
 
     if (captured == null) {
-      Audios.playTone('invalid.mp3');
+      //Audios.playTone('invalid.mp3');
       return false;
     }
 
@@ -51,7 +51,7 @@ class Battle {
     //
     // 轮到自己走棋的时候，才能悔棋
     if (_position.side != Side.White) {
-      Audios.playTone('invalid.mp3');
+      //Audios.playTone('invalid.mp3');
       return false;
     }
 
@@ -79,11 +79,11 @@ class Battle {
     }
 
     if (regreted) {
-      Audios.playTone('regret.mp3');
+      //Audios.playTone('regret.mp3');
       return true;
     }
 
-    Audios.playTone('invalid.mp3');
+    //Audios.playTone('invalid.mp3');
     return false;
   }
 

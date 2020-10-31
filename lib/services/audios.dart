@@ -12,9 +12,10 @@ class Audios {
       if (_bgmPlayer == null) {
         //
         _fixedBgmPlayer = AudioPlayer();
-        _bgmPlayer = AudioCache(prefix: 'audios/', fixedPlayer: _fixedBgmPlayer);
+        _bgmPlayer =
+            AudioCache(prefix: 'audios/', fixedPlayer: _fixedBgmPlayer);
 
-        await _bgmPlayer.loadAll(['bg_music.mp3']);
+        //await _bgmPlayer.loadAll(['bg_music.mp3']);
       }
 
       _fixedBgmPlayer.stop();
@@ -28,8 +29,9 @@ class Audios {
       if (_tonePlayer == null) {
         //
         _fixedTonePlayer = AudioPlayer();
-        _tonePlayer = AudioCache(prefix: 'audios/', fixedPlayer: _fixedTonePlayer);
-
+        _tonePlayer =
+            AudioCache(prefix: 'audios/', fixedPlayer: _fixedTonePlayer);
+/*
         await _tonePlayer.loadAll([
           'capture.mp3',
           'check.mp3',
@@ -42,6 +44,7 @@ class Audios {
           'move.mp3',
           'win.mp3',
         ]);
+*/
       }
 
       _fixedTonePlayer.stop();

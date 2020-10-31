@@ -32,7 +32,8 @@ class _MainMenuState extends State<MainMenu> with TickerProviderStateMixin {
       duration: Duration(milliseconds: 1500),
       vsync: this,
     );
-    shadowAnimation = new Tween(begin: 0.0, end: 12.0).animate(shadowController);
+    shadowAnimation =
+        new Tween(begin: 0.0, end: 12.0).animate(shadowController);
 
     inController.addStatusListener((status) {
       if (status == AnimationStatus.completed) shadowController.forward();
@@ -59,7 +60,8 @@ class _MainMenuState extends State<MainMenu> with TickerProviderStateMixin {
 
   navigateTo(Widget page) async {
     //
-    await Navigator.of(context).push(MaterialPageRoute(builder: (context) => page));
+    await Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => page));
 
     inController.reset();
     shadowController.reset();
@@ -131,8 +133,14 @@ class _MainMenuState extends State<MainMenu> with TickerProviderStateMixin {
       backgroundColor: ColorConsts.LightBackground,
       body: Stack(
         children: <Widget>[
-          Positioned(right: 0, top: 0, child: Image(image: AssetImage('images/mei.png'))),
-          Positioned(left: 0, bottom: 0, child: Image(image: AssetImage('images/zhu.png'))),
+          Positioned(
+              right: 0,
+              top: 0,
+              child: Image(image: AssetImage('images/mei.png'))),
+          Positioned(
+              left: 0,
+              bottom: 0,
+              child: Image(image: AssetImage('images/zhu.png'))),
           menuItems,
           Positioned(
             top: SanmillApp.StatusBarHeight,
