@@ -1,8 +1,6 @@
 import '../mill/mill-recorder.dart';
 
 import 'mill-base.dart';
-import 'step-name.dart';
-import 'steps-validate.dart';
 
 class Position {
   //
@@ -46,7 +44,7 @@ class Position {
     final captured = _board[to];
 
     final move = Move(from, to, captured: captured);
-    StepName.translate(this, move);
+    //StepName.translate(this, move);
     _recorder.stepIn(move, this);
 
     // 修改棋盘
@@ -63,7 +61,8 @@ class Position {
   bool validateMove(int from, int to) {
     // 移动的棋子的选手，应该是当前方
     if (Side.of(_board[from]) != _side) return false;
-    return (StepValidate.validate(this, Move(from, to)));
+    return true;
+    //(StepValidate.validate(this, Move(from, to)));
   }
 
   // 在判断行棋合法性等环节，要在克隆的棋盘上进行行棋假设，然后检查效果
