@@ -1,12 +1,10 @@
 import '../mill/mill-base.dart';
-import '../mill/step-name.dart';
 import '../common/color-consts.dart';
 import '../common/toast.dart';
 import '../engine/analysis.dart';
-import '../engine/cloud-engine.dart';
 import '../engine/engine.dart';
 import '../engine/native-engine.dart';
-import '../services/audios.dart';
+//import '../services/audios.dart';
 import '../services/player.dart';
 import 'package:flutter/material.dart';
 import '../game/battle.dart';
@@ -21,9 +19,7 @@ class BattlePage extends StatefulWidget {
   final EngineType engineType;
   final AiEngine engine;
 
-  BattlePage(this.engineType)
-      : engine =
-            (engineType == EngineType.Cloud) ? CloudEngine() : NativeEngine();
+  BattlePage(this.engineType) : engine = NativeEngine();
 
   @override
   _BattlePageState createState() => _BattlePageState();
@@ -161,38 +157,7 @@ class _BattlePageState extends State<BattlePage> {
 
     setState(() => _analysising = true);
 
-    try {
-      final result = await CloudEngine.analysis(Battle.shared.position);
-
-      if (result.type == 'analysis') {
-        //
-        List<AnalysisItem> items = result.value;
-        items.forEach(
-          (item) => item.stepName = StepName.translate(
-            Battle.shared.position,
-            Move.fromEngineStep(item.move),
-          ),
-        );
-        showAnalysisItems(
-          context,
-          title: '推荐招法',
-          items: result.value,
-          callback: (index) => Navigator.of(context).pop(),
-        );
-      } else if (result.type == 'no-result') {
-        Toast.toast(
-          context,
-          msg: '已请求服务器计算，请稍后查看！',
-          position: ToastPostion.bottom,
-        );
-      } else {
-        Toast.toast(
-          context,
-          msg: '错误: ${result.type}',
-          position: ToastPostion.bottom,
-        );
-      }
-    } catch (e) {
+    try {} catch (e) {
       Toast.toast(context, msg: '错误: $e', position: ToastPostion.bottom);
     } finally {
       setState(() => _analysising = false);

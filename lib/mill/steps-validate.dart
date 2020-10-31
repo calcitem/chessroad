@@ -1,6 +1,5 @@
 import '../common/math.ext.dart';
 import 'mill-base.dart';
-import 'mill-rules.dart';
 import 'position.dart';
 
 class StepValidate {
