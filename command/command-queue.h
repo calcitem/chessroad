@@ -3,12 +3,13 @@
 //  Runner
 //
 
-#ifndef command_queue_h
-#define command_queue_h
+#ifndef COMMAND_QUEUE_H
+#define COMMAND_QUEUE_H
 
-class CommandQueue {
-
-    enum {
+class CommandQueue
+{
+    enum
+    {
         MAX_COMMAND_COUNT = 128,
         COMMAND_LENGTH = 2048,
     };
@@ -23,4 +24,4 @@ public:
     bool read(char *dest);
 };
 
-#endif /* command_queue_h */
+#endif /* COMMAND_QUEUE_H */

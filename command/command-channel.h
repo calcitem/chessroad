@@ -3,13 +3,13 @@
 //  Runner
 //
 
-#ifndef command_channel_h
-#define command_channel_h
+#ifndef COMMAND_CHANNEL_H
+#define COMMAND_CHANNEL_H
 
 class CommandQueue;
 
-class CommandChannel {
-
+class CommandChannel
+{
     CommandChannel();
 
 public:
@@ -30,4 +30,4 @@ private:
     CommandQueue *responseQueue;
 };
 
-#endif /* command_channel_h */
+#endif /* COMMAND_CHANNEL_H */

@@ -9,12 +9,14 @@
 
 CommandChannel *CommandChannel::instance = NULL;
 
-CommandChannel::CommandChannel() {
+CommandChannel::CommandChannel()
+{
     commandQueue = new CommandQueue();
     responseQueue = new CommandQueue();
 }
 
-CommandChannel *CommandChannel::getInstance() {
+CommandChannel *CommandChannel::getInstance()
+{
     if (instance == NULL) {
         instance = new CommandChannel();
     }
@@ -22,14 +24,16 @@ CommandChannel *CommandChannel::getInstance() {
     return instance;
 }
 
-void CommandChannel::release() {
+void CommandChannel::release()
+{
     if (instance != NULL) {
         delete instance;
         instance = NULL;
     }
 }
 
-CommandChannel::~CommandChannel() {
+CommandChannel::~CommandChannel()
+{
     if (commandQueue != NULL) {
         delete commandQueue;
         commandQueue = NULL;
@@ -41,19 +45,22 @@ CommandChannel::~CommandChannel() {
     }
 }
 
-bool CommandChannel::pushCommand(const char *cmd) {
+bool CommandChannel::pushCommand(const char *cmd)
+{
     return commandQueue->write(cmd);
 }
 
-bool CommandChannel::popupCommand(char *buffer) {
+bool CommandChannel::popupCommand(char *buffer)
+{
     return commandQueue->read(buffer);
 }
 
-bool CommandChannel::pushResponse(const char *resp) {
+bool CommandChannel::pushResponse(const char *resp)
+{
     return responseQueue->write(resp);
 }
 
-bool CommandChannel::popupResponse(char *buffer) {
+bool CommandChannel::popupResponse(char *buffer)
+{
     return responseQueue->read(buffer);
 }
-

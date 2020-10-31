@@ -44,12 +44,11 @@
 		0F9AFC33B643B652A2BDA62F /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
 		148EBC32242AFF6500D3129B /* MillEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MillEngine.h; sourceTree = "<group>"; };
 		148EBC33242AFF6500D3129B /* MillEngine.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MillEngine.mm; sourceTree = "<group>"; };
-		148EBC37242AFF8000D3129B /* base2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = base2.h; path = ../../command/base2.h; sourceTree = "<group>"; };
+		148EBC37242AFF8000D3129B /* base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = base.h; path = ../../command/base.h; sourceTree = "<group>"; };
 		148EBC3A242AFF8000D3129B /* command-channel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "command-channel.h"; path = "../../command/command-channel.h"; sourceTree = "<group>"; };
 		148EBC3F242AFF8000D3129B /* command-queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "command-queue.h"; path = "../../command/command-queue.h"; sourceTree = "<group>"; };
 		148EBC40242AFF8000D3129B /* engine-main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = engine-main.cpp; path = ../../command/engine-main.cpp; sourceTree = "<group>"; };
 		148EBC42242AFF8000D3129B /* command-queue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "command-queue.cpp"; path = "../../command/command-queue.cpp"; sourceTree = "<group>"; };
-		148EBC43242AFF8000D3129B /* base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = base.h; path = ../../command/base.h; sourceTree = "<group>"; };
 		148EBC44242AFF8000D3129B /* engine-state.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "engine-state.h"; path = "../../command/engine-state.h"; sourceTree = "<group>"; };
 		148EBC52242AFF8100D3129B /* command-channel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "command-channel.cpp"; path = "../../command/command-channel.cpp"; sourceTree = "<group>"; };
 		148EBC53242AFF8100D3129B /* engine-main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = engine-main.h; path = ../../command/engine-main.h; sourceTree = "<group>"; };
@@ -91,8 +90,7 @@
 		148EBC35242AFF7000D3129B /* engine */ = {
 			isa = PBXGroup;
 			children = (
-				148EBC43242AFF8000D3129B /* base.h */,
-				148EBC37242AFF8000D3129B /* base2.h */,
+				148EBC37242AFF8000D3129B /* base.h */,
 				148EBC52242AFF8100D3129B /* command-channel.cpp */,
 				148EBC3A242AFF8000D3129B /* command-channel.h */,
 				148EBC42242AFF8000D3129B /* command-queue.cpp */,

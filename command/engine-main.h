@@ -6,7 +6,7 @@
 #ifndef ENGINE_MAIN_H
 #define ENGINE_MAIN_H
 
-void PrintLn(const char *sz, ...);
+void println(const char *sz, ...);
 
 int engineMain();
 

@@ -3,9 +3,12 @@
 //  Runner
 //
 
-#ifndef engine_state_h
-#define engine_state_h
+#ifndef ENGINE_STATE_H
+#define ENGINE_STATE_H
+typedef enum
+{
+    Ready,
+    Thinking
+} State;
 
-typedef enum { Ready, Thinking } State;
-
-#endif /* engine_state_h */
+#endif /* ENGINE_STATE_H */
