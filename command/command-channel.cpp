@@ -15,7 +15,6 @@ CommandChannel::CommandChannel() {
 }
 
 CommandChannel *CommandChannel::getInstance() {
-    
     if (instance == NULL) {
         instance = new CommandChannel();
     }

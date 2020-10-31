@@ -15,7 +15,7 @@ class CommandChannel {
 public:
     static CommandChannel *getInstance();
     static void release();
-    
+
     virtual ~CommandChannel();
 
     bool pushCommand(const char *cmd);
