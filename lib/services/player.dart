@@ -41,11 +41,6 @@ class Player extends RankItem {
 
   Player() : super.empty();
 
-  Future<void> increaseWinCloudEngine() async {
-    winCloudEngine++;
-    await saveAndUpload();
-  }
-
   Future<void> increaseWinPhoneAi() async {
     winPhoneAi++;
     await saveAndUpload();
