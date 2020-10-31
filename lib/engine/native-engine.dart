@@ -19,7 +19,7 @@ class NativeEngine extends AiEngine {
       print('Native startup Error: $e');
     }
 
-    await setBookFile();
+    //await setBookFile();
 
     await waitResponse(['ucciok'], sleep: 1, times: 30);
   }
@@ -75,6 +75,7 @@ class NativeEngine extends AiEngine {
     return null;
   }
 
+/*
   Future setBookFile() async {
     //
     final docDir = await getApplicationDocumentsDirectory();
@@ -92,6 +93,7 @@ class NativeEngine extends AiEngine {
 
     await send("setoption bookfiles ${bookFile.path}");
   }
+  */
 
   @override
   Future<EngineResponse> search(Position position, {bool byUser = true}) async {

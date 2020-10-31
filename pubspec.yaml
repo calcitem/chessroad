@@ -39,4 +39,4 @@ flutter:
     #- assets/audios/move.mp3
     #- assets/audios/win.mp3
 
-    - assets/book.dat
+    #- assets/book.dat
