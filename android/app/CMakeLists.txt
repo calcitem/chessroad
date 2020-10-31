@@ -8,19 +8,19 @@ add_library( # Sets the name of the library.
 
         # Provides a relative path to your source file(s).
         src/main/cpp/mill-engine.cpp
-        ../../eleeye/command-channel.cpp
-        ../../eleeye/command-queue.cpp
-        ../../eleeye/book.cpp
-        ../../eleeye/eleeye.cpp
-        ../../eleeye/evaluate.cpp
-        ../../eleeye/genmoves.cpp
-        ../../eleeye/hash.cpp
-        ../../eleeye/movesort.cpp
-        ../../eleeye/position.cpp
-        ../../eleeye/preeval.cpp
-        ../../eleeye/pregen.cpp
-        ../../eleeye/search.cpp
-        ../../eleeye/ucci.cpp)
+        ../../command/command-channel.cpp
+        ../../command/command-queue.cpp
+        ../../command/book.cpp
+        ../../command/eleeye.cpp
+        ../../command/evaluate.cpp
+        ../../command/genmoves.cpp
+        ../../command/hash.cpp
+        ../../command/movesort.cpp
+        ../../command/position.cpp
+        ../../command/preeval.cpp
+        ../../command/pregen.cpp
+        ../../command/search.cpp
+        ../../command/ucci.cpp)
 
 
 find_library( # Sets the name of the path variable.

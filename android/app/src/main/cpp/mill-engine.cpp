@@ -9,9 +9,9 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <string.h>
-#include "../../../../../eleeye/eleeye.h"
-#include "../../../../../eleeye/engine-state.h"
-#include "../../../../../eleeye/command-channel.h"
+#include "../../../../../command/eleeye.h"
+#include "../../../../../command/engine-state.h"
+#include "../../../../../command/command-channel.h"
 
 extern "C" {
 
