@@ -133,14 +133,6 @@ class _MainMenuState extends State<MainMenu> with TickerProviderStateMixin {
       backgroundColor: ColorConsts.LightBackground,
       body: Stack(
         children: <Widget>[
-          Positioned(
-              right: 0,
-              top: 0,
-              child: Image(image: AssetImage('images/mei.png'))),
-          Positioned(
-              left: 0,
-              bottom: 0,
-              child: Image(image: AssetImage('images/zhu.png'))),
           menuItems,
           Positioned(
             top: SanmillApp.StatusBarHeight,
