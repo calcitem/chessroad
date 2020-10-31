@@ -50,7 +50,7 @@
                                   selector:@selector(engineThread:)
                                   object:nil]];
     
-    [self send:@"ucci"];
+    [self send:@"uci"];
     
     return 0;
 }
@@ -83,7 +83,7 @@
     NSLog(@"<<<=== %@\n", line);
 
     if ([line isEqualToString:@"readyok"] ||
-        [line isEqualToString:@"ucciok"] ||
+        [line isEqualToString:@"uciok"] ||
         [line hasPrefix:@"bestmove"] ||
         [line hasPrefix:@"nobestmove"]) {
         

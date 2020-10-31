@@ -50,7 +50,7 @@ Java_com_calcitem_sanmill_MillEngine_startup(JNIEnv *env, jobject obj) {
 
     pthread_create(&thread_id, NULL, engineThread, NULL);
 
-    Java_com_calcitem_sanmill_MillEngine_send(env, obj, env->NewStringUTF("ucci"));
+    Java_com_calcitem_sanmill_MillEngine_send(env, obj, env->NewStringUTF("uci"));
 
     return 0;
 }
@@ -86,7 +86,7 @@ Java_com_calcitem_sanmill_MillEngine_read(JNIEnv *env, jobject) {
     printf("<<< %s\n", line);
 
     if (strstr(line, "readyok") ||
-        strstr(line, "ucciok") ||
+        strstr(line, "uciok") ||
         strstr(line, "bestmove") ||
         strstr(line, "nobestmove")) {
 

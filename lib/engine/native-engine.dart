@@ -18,7 +18,7 @@ class NativeEngine extends AiEngine {
 
     //await setBookFile();
 
-    await waitResponse(['ucciok'], sleep: 1, times: 30);
+    await waitResponse(['uciok'], sleep: 1, times: 30);
   }
 
   Future<void> send(String command) async {

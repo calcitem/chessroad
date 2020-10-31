@@ -60,7 +60,7 @@ class Move {
 
   String captured;
 
-  // 'step' is the ucci engine's move-string
+  // 'step' is the UCI engine's move-string
   String step;
   String stepName;
 
