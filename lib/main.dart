@@ -46,7 +46,7 @@ class _SanmillAppState extends State<SanmillApp> {
   Widget build(BuildContext context) {
     //
     return MaterialApp(
-      theme: ThemeData(primarySwatch: Colors.brown, fontFamily: 'QiTi'),
+      theme: ThemeData(primarySwatch: Colors.brown),
       debugShowCheckedModeBanner: false,
       home: WillPopScope(
         onWillPop: () async {

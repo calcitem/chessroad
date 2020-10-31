@@ -10,7 +10,7 @@ class WordsOnBoard extends StatelessWidget {
     //
     final blackColumns = '１２３４５６７８９', redColumns = '九八七六五四三二一';
     final bChildren = <Widget>[], rChildren = <Widget>[];
-    
+
     final digitsStyle = TextStyle(fontSize: DigitsFontSize);
     final rivierTipsStyle = TextStyle(fontSize: 28.0);
 
@@ -45,7 +45,7 @@ class WordsOnBoard extends StatelessWidget {
           Row(children: rChildren),
         ],
       ),
-      style: TextStyle(color: ColorConsts.BoardTips, fontFamily: 'QiTi'),
+      style: TextStyle(color: ColorConsts.BoardTips),
     );
   }
 }
