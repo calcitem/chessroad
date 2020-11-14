@@ -30,7 +30,7 @@ inline int BitScan(uint32_t Operand) {
 }
 
 inline int Bsf(uint32_t Operand) {
-  return BitScan(Operand & -Operand);
+  return BitScan(Operand & -(int32_t)Operand);
 }
 
 inline int Bsr(uint32_t Operand) {

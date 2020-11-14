@@ -10,6 +10,7 @@
  */
 
 #include <stdio.h>
+#include <cstring>
 #include "base2.h"
 #include "parse.h"
 #include "pipe.h"

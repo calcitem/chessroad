@@ -4,6 +4,10 @@
 #ifndef BASE_H
 #define BASE_H
 
+#ifdef WIN32
+#include "windows.h"
+#endif
+
 #ifdef _MSC_VER
   typedef signed   __int64  int64_t; // ll
   typedef unsigned __int64 uint64_t; // qw
@@ -78,10 +82,22 @@ inline int PopCnt32(uint32_t dw) {
   return (n >> 16) + (n & 0x0000ffff);
 }
 
+#ifdef WIN32
+int clock_gettime(int X, struct timeval *tv);
+#endif
+
 inline int64_t GetTime() {
-  timespec ts = {0, 0};
-  clock_gettime(CLOCK_REALTIME, &ts);
-  return ts.tv_sec * 1000 + ts.tv_nsec / 1000 / 1000 / 1000;
+
+#ifdef WIN32
+  struct timeval ts;
+  clock_gettime(0, &ts);
+  return ts.tv_sec * 1000 + ts.tv_usec / 1000 / 1000;
+#else
+    timespec ts = { 0, 0 };
+    clock_gettime(CLOCK_REALTIME, &ts);
+    return ts.tv_sec * 1000 + ts.tv_nsec / 1000 / 1000 / 1000;
+#endif
+  
 }
 
 #endif

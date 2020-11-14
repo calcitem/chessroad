@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include "search.h"
 #include "command-channel.h"
 
-const int INTERRUPT_COUNT = 4096; // ËÑË÷Èô¸É½áµãºóµ÷ÓÃÖÐ¶Ï
+const int INTERRUPT_COUNT = 4096; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½
 
 void PrintLn(const char *sz, ...) {
 
@@ -48,7 +48,71 @@ void PrintLn(const char *sz, ...) {
     while (!channel->pushResponse(buffer)) Idle();
 }
 
+#ifdef WIN32
+LARGE_INTEGER
+getFILETIMEoffset()
+{
+    SYSTEMTIME s;
+    FILETIME f;
+    LARGE_INTEGER t;
+
+    s.wYear = 1970;
+    s.wMonth = 1;
+    s.wDay = 1;
+    s.wHour = 0;
+    s.wMinute = 0;
+    s.wSecond = 0;
+    s.wMilliseconds = 0;
+    SystemTimeToFileTime(&s, &f);
+    t.QuadPart = f.dwHighDateTime;
+    t.QuadPart <<= 32;
+    t.QuadPart |= f.dwLowDateTime;
+    return (t);
+}
+
+int
+clock_gettime(int X, struct timeval *tv)
+{
+    LARGE_INTEGER           t;
+    FILETIME            f;
+    double                  microseconds;
+    static LARGE_INTEGER    offset;
+    static double           frequencyToMicroseconds;
+    static int              initialized = 0;
+    static BOOL             usePerformanceCounter = 0;
+
+    if (!initialized) {
+        LARGE_INTEGER performanceFrequency;
+        initialized = 1;
+        usePerformanceCounter = QueryPerformanceFrequency(&performanceFrequency);
+        if (usePerformanceCounter) {
+            QueryPerformanceCounter(&offset);
+            frequencyToMicroseconds = (double)performanceFrequency.QuadPart / 1000000.;
+        } else {
+            offset = getFILETIMEoffset();
+            frequencyToMicroseconds = 10.;
+        }
+    }
+    if (usePerformanceCounter) QueryPerformanceCounter(&t);
+    else {
+        GetSystemTimeAsFileTime(&f);
+        t.QuadPart = f.dwHighDateTime;
+        t.QuadPart <<= 32;
+        t.QuadPart |= f.dwLowDateTime;
+    }
+
+    t.QuadPart -= offset.QuadPart;
+    microseconds = (double)t.QuadPart / frequencyToMicroseconds;
+    t.QuadPart = microseconds;
+    tv->tv_sec = t.QuadPart / 1000000;
+    tv->tv_usec = t.QuadPart % 1000000;
+    return (0);
+}
+
+int main(void) {
+#else
 int engineMain(void) {
+#endif
   int i;
   bool bPonderTime;
   UcciCommStruct UcciComm;
@@ -92,7 +156,7 @@ int engineMain(void) {
   PrintLn("option newgame type button");
   PrintLn("ucciok");
 
-  // ÒÔÏÂÊÇ½ÓÊÕÖ¸ÁîºÍÌá¹©¶Ô²ßµÄÑ­»·Ìå
+  // ï¿½ï¿½ï¿½ï¿½ï¿½Ç½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½á¹©ï¿½Ô²ßµï¿½Ñ­ï¿½ï¿½ï¿½ï¿½
   while (!Search.bQuit) {
     switch (IdleLine(UcciComm, Search.bDebug)) {
     case UCCI_COMM_ISREADY:
@@ -142,12 +206,12 @@ int engineMain(void) {
         break;
       case UCCI_OPTION_HASHSIZE:
         DelHash();
-        i = 19; // Ð¡ÓÚ1£¬·ÖÅä0.5MÖÃ»»±í
+        i = 19; // Ð¡ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0.5Mï¿½Ã»ï¿½ï¿½ï¿½
         while (UcciComm.nSpin > 0) {
           UcciComm.nSpin /= 2;
           i ++;
         }
-        NewHash(MAX(i, 24)); // ×îÐ¡µÄÖÃ»»±íÉèÎª16M
+        NewHash(MAX(i, 24)); // ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Îª16M
         break;
       case UCCI_OPTION_IDLE:
         switch (UcciComm.Grade) {
@@ -223,16 +287,16 @@ int engineMain(void) {
       case UCCI_GO_TIME_INCREMENT:
         Search.nGoMode = GO_MODE_TIMER;
         if (UcciComm.Go == UCCI_GO_TIME_MOVESTOGO) {
-          // ¶ÔÓÚÊ±¶ÎÖÆ£¬°ÑÊ£ÓàÊ±¼äÆ½¾ù·ÖÅäµ½Ã¿Ò»²½£¬×÷ÎªÊÊµ±Ê±ÏÞ¡£
-          // Ê£Óà²½Êý´Ó1µ½5£¬×î´óÊ±ÏÞÒÀ´ÎÊÇÊ£ÓàÊ±¼äµÄ100%¡¢90%¡¢80%¡¢70%ºÍ60%£¬5ÒÔÉÏ¶¼ÊÇ50%
+          // ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Æ£ï¿½ï¿½ï¿½Ê£ï¿½ï¿½Ê±ï¿½ï¿½Æ½ï¿½ï¿½ï¿½ï¿½ï¿½äµ½Ã¿Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½Êµï¿½Ê±ï¿½Þ¡ï¿½
+          // Ê£ï¿½à²½ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½5ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê£ï¿½ï¿½Ê±ï¿½ï¿½ï¿½100%ï¿½ï¿½90%ï¿½ï¿½80%ï¿½ï¿½70%ï¿½ï¿½60%ï¿½ï¿½5ï¿½ï¿½ï¿½Ï¶ï¿½ï¿½ï¿½50%
           Search.nProperTimer = UcciComm.nTime / UcciComm.nMovesToGo;
           Search.nMaxTimer = UcciComm.nTime * MAX(5, 11 - UcciComm.nMovesToGo) / 10;
         } else {
-          // ¶ÔÓÚ¼ÓÊ±ÖÆ£¬¼ÙÉèÆå¾Ö»áÔÚ20»ØºÏÄÚ½áÊø£¬Ëã³öÆ½¾ùÃ¿Ò»²½µÄÊÊµ±Ê±ÏÞ£¬×î´óÊ±ÏÞÊÇÊ£ÓàÊ±¼äµÄÒ»°ë
+          // ï¿½ï¿½ï¿½Ú¼ï¿½Ê±ï¿½Æ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½ï¿½20ï¿½Øºï¿½ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ½ï¿½ï¿½Ã¿Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½Ê±ï¿½Þ£ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ê£ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
           Search.nProperTimer = UcciComm.nTime / 20 + UcciComm.nIncrement;
           Search.nMaxTimer = UcciComm.nTime / 2;
         }
-        // Èç¹ûÊÇºóÌ¨Ë¼¿¼µÄÊ±¼ä·ÖÅä²ßÂÔ£¬ÄÇÃ´ÊÊµ±Ê±ÏÞÉèÎªÔ­À´µÄ1.25±¶
+        // ï¿½ï¿½ï¿½ï¿½Çºï¿½Ì¨Ë¼ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô£ï¿½ï¿½ï¿½Ã´ï¿½Êµï¿½Ê±ï¿½ï¿½ï¿½ï¿½ÎªÔ­ï¿½ï¿½ï¿½ï¿½1.25ï¿½ï¿½
         Search.nProperTimer += (bPonderTime ? Search.nProperTimer / 4 : 0);
         Search.nMaxTimer = MIN(Search.nMaxTimer, Search.nProperTimer * 10);
         SearchMain(UCCI_MAX_DEPTH);

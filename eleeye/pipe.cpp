@@ -69,9 +69,9 @@ void PipeStruct::Open(const char *szProcFile) {
     hOutput = GetStdHandle(STD_OUTPUT_HANDLE);
     bConsole = GetConsoleMode(hInput, &dwMode);
   } else {
-    GetCurrentDirectory(PATH_MAX_CHAR, szCurDir);
+    GetCurrentDirectoryA(PATH_MAX_CHAR, szCurDir);
     ParseDir(szDir, szProcFile);
-    SetCurrentDirectory(szDir);
+    SetCurrentDirectoryA(szDir);
 
     memset(&sa, 0, sizeof(SECURITY_ATTRIBUTES));
     sa.nLength = sizeof(SECURITY_ATTRIBUTES);
@@ -96,7 +96,7 @@ void PipeStruct::Open(const char *szProcFile) {
     hOutput = hStdinWrite;
     bConsole = FALSE;
 
-    SetCurrentDirectory(szCurDir);
+    SetCurrentDirectoryA(szCurDir);
   }
   if (bConsole) {
     SetConsoleMode(hInput, dwMode & ~(ENABLE_MOUSE_INPUT | ENABLE_WINDOW_INPUT));

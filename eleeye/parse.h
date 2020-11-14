@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <string.h>
+#include <cstring>
 
 #ifndef PARSE_H
 #define PARSE_H
@@ -9,8 +9,14 @@
 #include <windows.h>
 #include <shlwapi.h>
 
+#include "eleeye.h"
+
 inline char *strcasestr(const char *sz1, const char *sz2) {
-  return StrStrI(sz1, sz2);
+#ifdef WIN32
+    return strstr((char*)sz1, sz2);
+#else
+  return StrStr(sz1, sz2);
+#endif
 }
 
 #endif
